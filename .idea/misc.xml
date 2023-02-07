@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/drawable/bg_iv.xml" value="0.331" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/drawable/bg_linear_layout.xml" value="0.331" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/drawable/box_material_sin.xml" value="0.209" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.331" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.331" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/drawable/ic_baseline_priority_high_24.xml" value="0.331" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout-v26/template_update.xml" value="0.4550898203592814" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/activity_pre_register.xml" value="0.26666666666666666" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/activity_splash.xml" value="0.13269927536231885" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/activity_sync_success.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/activity_update.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/activity_update_tareo.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/dialog_view.xml" value="0.14703425229741018" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/item_list.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/nav_header_main.xml" value="0.365625" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/spinner_list.xml" value="0.365625" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/template_update.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/menu/menu_principal.xml" value="0.2712962962962963" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/menu/menu_search.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+    <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".actividades.Register">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/my_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="?attr/colorPrimary"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/block"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="300dp"
+                app:layout_constraintVertical_bias="0.01"
+                app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tvcultivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="220dp"
+                android:textColorHint="@color/black"
+                android:text="@string/cultivo"
+                app:layout_constraintTop_toBottomOf="@+id/block"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.01"
+                />
+
+            <Spinner
+                android:id="@+id/cultivo"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvcultivo"
+                app:layout_constraintVertical_bias="0.02"
+                android:background="@drawable/box_material_sin"
+                android:inputType="none"
+                />
+
+            <TextView
+                android:id="@+id/tvccostos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="220dp"
+                android:textColorHint="@color/black"
+                android:text="@string/costProd"
+                app:layout_constraintTop_toBottomOf="@+id/cultivo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.01"
+                />
+
+            <Spinner
+                android:id="@+id/costProd"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvccostos"
+                app:layout_constraintVertical_bias="0.02"
+                android:background="@drawable/box_material_sin"
+                android:inputType="text"
+                />
+
+            <TextView
+                android:id="@+id/tvphase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="220dp"
+                android:textColorHint="@color/black"
+                android:text="@string/activity"
+                app:layout_constraintTop_toBottomOf="@+id/costProd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.01"
+                />
+
+            <Spinner
+                android:id="@+id/activity"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/box_material_sin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvphase"
+                app:layout_constraintVertical_bias="0.02"
+                android:inputType="none"
+                />
+
+            <TextView
+                android:id="@+id/tvlabor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="220dp"
+                android:textColorHint="@color/black"
+                android:text="@string/job"
+                app:layout_constraintTop_toBottomOf="@+id/activity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.01"
+                />
+
+            <Spinner
+                android:id="@+id/job"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/box_material_sin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvlabor"
+                app:layout_constraintVertical_bias="0.02"
+                android:inputType="none"
+                />
+
+            <TextView
+                android:id="@+id/rendimiento"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="220dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/job"
+                app:layout_constraintVertical_bias="0.01"
+                />
+
+            <TextView
+                android:id="@+id/cantidad"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/rendimiento"
+                app:layout_constraintTop_toBottomOf="@+id/job"
+                app:layout_constraintVertical_bias="0.01"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/advance"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+
+                android:hint="@string/standar"
+
+                app:boxBackgroundMode="outline"
+                app:endIconMode="clear_text"
+                app:helperText="@string/read_advance"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cantidad"
+                app:layout_constraintVertical_bias="0.05">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/advanceT"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/timeI"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="220dp"
+                android:hint="@string/hourI"
+                android:textColorHint="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/advance"
+                app:layout_constraintVertical_bias="0.12"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/horaInicio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/hourI"
+
+                app:boxBackgroundMode="outline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/timeI"
+                app:layout_constraintTop_toBottomOf="@+id/advance"
+                app:layout_constraintVertical_bias="0.1"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hourIni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/timeF"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="220dp"
+                android:hint="@string/hourF"
+                android:textColorHint="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timeI"
+                app:layout_constraintVertical_bias="0.13"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/horaFin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/hourF"
+
+                app:boxBackgroundMode="outline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/timeF"
+                app:layout_constraintTop_toBottomOf="@+id/horaInicio"
+                app:layout_constraintVertical_bias="0.1"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hourFin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/timeE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="220dp"
+                android:hint="@string/hourE"
+                android:textColorHint="@color/black"
+                style="?attr/materialButtonOutlinedStyle"
+                app:strokeColor="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timeF"
+                app:layout_constraintVertical_bias="0.15" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/horaE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="16dp"
+                android:autofillHints="username"
+                android:hint="@string/hourE"
+
+                app:boxBackgroundMode="outline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/timeF"
+                app:layout_constraintTop_toBottomOf="@+id/horaFin"
+                app:layout_constraintVertical_bias="0.15">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hourE"
+                    android:text="@string/food"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dni"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="120dp"
+                android:autofillHints="username"
+                android:hint="@string/dni"
+
+                app:helperText="@string/read_document"
+                app:boxBackgroundMode="outline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                android:textColorHint="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horaE"
+                app:layout_constraintVertical_bias="0.15">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/dniT"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnScanner"
+                android:layout_width="59dp"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/icon_scanner"
+                app:layout_constraintBottom_toBottomOf="@+id/btnPre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dni"
+                app:layout_constraintTop_toBottomOf="@+id/horaE"
+                app:layout_constraintVertical_bias="0.15" />
+
+            <Button
+                android:id="@+id/btnPre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="100dp"
+                android:background="@color/grey"
+                android:hint="@string/save_pre"
+                android:textColorHint="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dni"
+                app:layout_constraintVertical_bias="0.30"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+

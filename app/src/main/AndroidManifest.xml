@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TAREOVLV"
+        android:usesCleartextTraffic="true"
+        android:largeHeap="true"
+        tools:targetApi="m"
+        android:icon="@mipmap/ic_principal_icon">
+        <activity
+            android:name=".finishLoadData"
+            android:exported="false" />
+        <activity
+            android:name=".Error_Send"
+            android:exported="false" />
+        <activity
+            android:name=".Confirmation_Send"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".actividades.SplashScreen"
+            android:exported="true" />
+        <activity
+            android:name=".actividades.Update"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.UpdateTareo"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.SyncSuccess"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.Register"
+            android:exported="true" />
+        <activity
+            android:name=".actividades.PreRegister"
+            android:exported="true" />
+        <activity
+            android:name=".actividades.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
+    </application>
+
+</manifest>
