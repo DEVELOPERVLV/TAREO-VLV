@@ -8,19 +8,23 @@
         android:title="Actualizar"
         app:showAsAction="always"
         />
+
     <item
         android:id="@+id/icon_register"
         android:icon="@drawable/icon_register"
         android:title="Registros"
         app:showAsAction="always" />
+
     <item
         android:id="@+id/icon_sync"
         android:icon="@drawable/icon_sync"
         android:title="Sincronizar"
         app:showAsAction="always" />
+
     <item
         android:id="@+id/icon_logout"
         android:icon="@drawable/ic_baseline_person_remove_24"
         android:title="Logout"
         app:showAsAction="always" />
+
 </menu>

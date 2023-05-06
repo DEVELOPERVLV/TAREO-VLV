@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             bLog.setOnClickListener { login() }
         }else{
             if(savedString.isNotEmpty()){
-                val intent = Intent(this, PreRegister::class.java)
+                val intent = Intent(this, Principal::class.java)
                 startActivity(intent)
                 finish()
             }

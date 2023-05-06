@@ -8,13 +8,11 @@
     <string name="hourF">Hora Fin</string>
     <string name="hourE">Almuerzo</string>
     <string name="save_pre">Guardar</string>
-    <string name="cultivo">Cultivo / Lote / Area</string>
-    <string name="costProd">Centro de Costos</string>
+    <string name="op">Orden de Producción</string>
+    <string name="costCenter">Centro de Costos</string>
     <string name="activity">Fases</string>
     <string name="job">Labores</string>
     <string name="standar">Estandar</string>
-    <string name="traditional">TRADICIONAL</string>
-    <string name="standarI">ESTANDAR</string>
     <string name="food">0.00</string>
     <string name="sede">Sede</string>
 
@@ -24,42 +22,31 @@
 
     <!--register layout STRINGS-->
     <string name="send_data">SUBIR TAREO</string>
-    <string name="earring">Tiene %1$s registros por subir</string>
-    <string name="endEarring">No tiene registros por subir</string>
 
     <!--sync_success layout STRINGS-->
     <string name="update_data">ACTUALIZAR DATOS</string>
 
     <!--update layout STRINGS-->
-    <string name="idtv">ID</string>
-    <string name="idet">Id</string>
     <string name="dni">DNI</string>
     <string name="advancetv">Avance</string>
-    <string name="advanceet">AVANCE</string>
     <string name="update">ACTUALIZAR</string>
-    <string name="ourtv">HORAS</string>
-    <string name="ouret">COMEDOR</string>
 
-    <string name="CCenterUpd">Centro de Costos: %1$s</string>
-    <string name="QComedor">Quitar Almuerzo</string>
-    <string name="AComedor">Agregar Almuerzo</string>
-    <string name="Fases">Fases</string>
     <string name="TJob">TRADICIONAL</string>
     <string name="EJob">ESTANDAR</string>
-    <string name="foodA">0.54</string>
     <string name="foodAc">0.54</string>
     <string name="foodN">0.00</string>
-
-    <string name="hourIniV">6.30</string>
-    <string name="hourFinV">16.00</string>
 
     <!--splash layout STRINGS-->
     <string name="app_version">Version 1.4.0</string>
 
     <!--Delete layout STRINGS-->
-    <string name="delete">Borrar Tareo</string>
 
     <!--Float button-->
     <string name="TODO">TODO</string>
+
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

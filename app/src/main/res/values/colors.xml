@@ -8,4 +8,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#912A84</color>
     <color name="redAlert">#DD0505</color>
+    <color name="vlv">#912A84</color>
 </resources>

@@ -41,6 +41,7 @@ class TareoCRUD(context: Context) {
         contentValues.put(TareoContract.Companion.Entrada.NOMBRES, pre.nombre)
         contentValues.put(TareoContract.Companion.Entrada.TOTALES, pre.totales)
         contentValues.put(TareoContract.Companion.Entrada.SEDE, pre.sede)
+        contentValues.put(TareoContract.Companion.Entrada.OPROD, pre.oprod)
 
         val success = db.insert(TareoContract.Companion.Entrada.TBL_PRE, null, contentValues)
         db.close()
@@ -69,7 +70,8 @@ class TareoCRUD(context: Context) {
             TareoContract.Companion.Entrada.STATUS,
             TareoContract.Companion.Entrada.NOMBRES,
             TareoContract.Companion.Entrada.TOTALES,
-            TareoContract.Companion.Entrada.SEDE)
+            TareoContract.Companion.Entrada.SEDE,
+            TareoContract.Companion.Entrada.OPROD)
 
         val c:Cursor = db.query(TareoContract.Companion.Entrada.TBL_PRE,
             columnas,
@@ -96,7 +98,8 @@ class TareoCRUD(context: Context) {
                 c.getInt(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.STATUS)),
                 c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.NOMBRES)),
                 c.getFloat(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.TOTALES)),
-                c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.SEDE))
+                c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.SEDE)),
+                c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.OPROD))
             ))
         }
         db.close()
@@ -125,7 +128,8 @@ class TareoCRUD(context: Context) {
             TareoContract.Companion.Entrada.STATUS,
             TareoContract.Companion.Entrada.NOMBRES,
             TareoContract.Companion.Entrada.TOTALES,
-            TareoContract.Companion.Entrada.SEDE)
+            TareoContract.Companion.Entrada.SEDE,
+            TareoContract.Companion.Entrada.OPROD)
 
         val c:Cursor = db.query(
 
@@ -156,7 +160,8 @@ class TareoCRUD(context: Context) {
                 c.getInt(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.STATUS)),
                 c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.NOMBRES)),
                 c.getFloat(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.TOTALES)),
-                c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.SEDE))
+                c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.SEDE)),
+                c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.Entrada.OPROD))
 
             )
 
@@ -189,6 +194,7 @@ class TareoCRUD(context: Context) {
         values.put(TareoContract.Companion.Entrada.NOMBRES, pre.nombre)
         values.put(TareoContract.Companion.Entrada.TOTALES, pre.totales)
         values.put(TareoContract.Companion.Entrada.SEDE, pre.sede)
+        values.put(TareoContract.Companion.Entrada.OPROD, pre.oprod)
 
         db.update(
             TareoContract.Companion.Entrada.TBL_PRE,

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Home"/>
+
+        <item
+            android:id="@+id/nav_viewRegister"
+            android:icon="@drawable/icon_view_all"
+            android:title="Registros"/>
+
+        <item
+            android:id="@+id/nav_sendTareos"
+            android:icon="@drawable/icon_register"
+            android:title="Enviar Tareos"/>
+
+        <item
+            android:id="@+id/nav_sinc"
+            android:icon="@drawable/icon_sync"
+            android:title="Sincronizar Datos"/>
+
+        <item
+            android:id="@+id/nav_viewTareos"
+            android:icon="@drawable/ic_baseline_checklist_24"
+            android:title="Ver Tareos"/>
+
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_baseline_live_help_24"
+            android:title="Ayuda"/>
+
+    </group>
+
+    <item
+        android:title="">
+
+        <menu>
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_baseline_person_remove_24"
+                android:title="Logout"/>
+        </menu>
+    </item>
+
+</menu>

@@ -564,7 +564,7 @@ class PreRegister : AppCompatActivity() {
                                     val status = crud.insertPre(PreModel(
                                         id = null,user = userRegistra.trim(), costcenter = ccostos, activity = phase,
                                         job = job, advance = advance.trim(), timeI = timeI.trim(), timeF = timeF.trim(), timeE = timeE.trim(),
-                                        dni = dni.trim(), dia = strDate, hora = strHour, estado = estado, nombre = "Usuario no registrado o valide DNI", totales = totales.toFloat(), sede = sedeTareo))
+                                        dni = dni.trim(), dia = strDate, hora = strHour, estado = estado, nombre = "Usuario no registrado o valide DNI", totales = totales.toFloat(), sede = sedeTareo, oprod = ""))
 
                                     inicioLabor+=0.00
                                     finLabor+=0.00
@@ -583,7 +583,7 @@ class PreRegister : AppCompatActivity() {
                                     val status = crud.insertPre(PreModel(
                                         id = null,user = userRegistra.trim(), costcenter = ccostos, activity = phase,
                                         job = job, advance = advance.trim(), timeI = timeI.trim(), timeF = timeF.trim(), timeE = timeE.trim(),
-                                        dni = dni.trim(), dia = strDate, hora = strHour, estado = estado, nombre = nombre, totales = totales.toFloat(), sede = sedeTareo))
+                                        dni = dni.trim(), dia = strDate, hora = strHour, estado = estado, nombre = nombre, totales = totales.toFloat(), sede = sedeTareo, oprod = ""))
 
                                     inicioLabor+=0.00
                                     finLabor+=0.00
@@ -652,17 +652,9 @@ class PreRegister : AppCompatActivity() {
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if(keyCode == 4){
-            MaterialAlertDialogBuilder(this)
-                .setTitle("Alerta")
-                .setMessage("¿Desea cerrar el app Tareo?")
-                .setNegativeButton("No") { dialog, which -> showSnackBar("Cancelado") }
-                .setPositiveButton("Si") { dialog, which ->
-                    showSnackBar("Cerrando")
-                    finish()
-                }
-                .show()
-
-
+            val intent = Intent(this, Principal()::class.java)
+            startActivity(intent)
+            finish()
         }
 
         return super.onKeyDown(keyCode, event)

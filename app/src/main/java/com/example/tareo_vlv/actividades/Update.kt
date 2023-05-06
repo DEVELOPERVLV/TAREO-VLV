@@ -165,7 +165,7 @@ class Update : AppCompatActivity(){
             nombre = actualizarDNI(dni),
             totales = totalLabor.toFloat(),
             sede = sede,
-
+            oprod = ""
             ))
 
         startActivity(Intent(this, UpdateTareo::class.java))

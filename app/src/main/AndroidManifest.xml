@@ -6,20 +6,27 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_principal_icon"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.TAREOVLV"
         android:usesCleartextTraffic="true"
-        android:largeHeap="true"
-        tools:targetApi="m"
-        android:icon="@mipmap/ic_principal_icon">
+        tools:targetApi="m">
         <activity
-            android:name=".finishLoadData"
+            android:name=".DashBoard"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.Principal"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.tareoSOP"
             android:exported="false" />
         <activity
             android:name=".Error_Send"

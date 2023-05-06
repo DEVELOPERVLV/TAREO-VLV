@@ -18,7 +18,7 @@ class PreModel(
     nombre: String,
     totales: Float,
     sede: String,
-
+    oprod: String,
 ) {
 
     var id:Int? = null
@@ -37,6 +37,7 @@ class PreModel(
     var nombre: String? = null
     var totales: Float? = null
     var sede: String? = null
+    var oprod: String? = null
 
     init {
 
@@ -56,6 +57,7 @@ class PreModel(
         this.nombre = nombre
         this.totales = totales
         this.sede = sede
+        this.oprod = oprod
 
     }
 

@@ -30,6 +30,7 @@ class SyncSuccess : AppCompatActivity() {
     private lateinit var lcrud: LaborCRUD
     private lateinit var tacrud: TareadorCRUD
     private lateinit var culcrud: CultivoCRUD
+    private lateinit var opcrud: OProdCRUD
 
     private var e = 0
     private var a = 0
@@ -52,6 +53,7 @@ class SyncSuccess : AppCompatActivity() {
         costcrud = CcenterCRUD(this)
         acrud = ActiviyCRUD(this)
         lcrud = LaborCRUD(this)
+        opcrud = OProdCRUD(this)
 
         updateData()
 
@@ -70,16 +72,17 @@ class SyncSuccess : AppCompatActivity() {
                         tcrud.deleteTrabajador()
                         culcrud.delelteCultivo()
                         costcrud.deleteCcenter()
+                        opcrud.deleteOP()
                         acrud.deleteActivity()
                         lcrud.deleteLabor()
                         measureTimeMillis {
                             val job1 = launch {
                                 delay(500L)
-                                cultivoHTTP(userRegistra)
+                                costosHTTP(userRegistra)
                             }
                             val job2 = launch {
                                 delay(1000L)
-                                costosHTTP(userRegistra)
+
                             }
                             val job3 = launch {
                                 delay(1500L)
@@ -208,8 +211,47 @@ class SyncSuccess : AppCompatActivity() {
                         ,jsonObject.getString("ccostos")
                     ))
 
-                    activityHTTP(jsonObject.getString("ccostos"))
+                    oprodHTTP(jsonObject.getString("ccostos"))
 
+                }
+
+            }.start()
+        }catch (e:Exception){
+
+        }
+    }
+
+    private fun oprodHTTP(ccostos: String){
+        val queue = Volley.newRequestQueue(this)
+        val stringRequest = StringRequest(
+            Request.Method.GET,
+            "",{
+                response ->
+                insertOprod(ccostos)
+            }, {error ->
+
+                error.message?.let { Log.d("HTTP_REQUEST", it)}
+
+            }
+        )
+        queue.add(stringRequest)
+        queue.cache.clear()
+    }
+
+    private fun insertOprod(response: String){
+        try {
+            val jsonArray = JSONArray(response)
+
+            thread {
+
+                for (i in 0 until jsonArray.length()){
+                    val jsonObject = jsonArray.getJSONObject(i)
+
+                    opcrud.insertOProd(OProdModel(
+                        jsonObject.getString(""),
+                        jsonObject.getString(""),
+                        jsonObject.getString("")
+                        ))
                 }
 
             }.start()
@@ -263,7 +305,7 @@ class SyncSuccess : AppCompatActivity() {
         val stringRequest = StringRequest(
 
                 Request.Method.GET,
-            "http://199.241.218.53:60000/apiTareoEsp/apiLabor.php", {
+            "http://199.241.218.53:60000/apiTareo/apiLaborOP.php?funcion=obtenerLaborOP", {
                     response ->
                 insertLab(response)
 
@@ -289,8 +331,8 @@ class SyncSuccess : AppCompatActivity() {
                 for(i in 0 until jsonArray.length()){
                     val jsonObject = jsonArray.getJSONObject(i)
                     lcrud.insertLabor(LaborModel(
-                        jsonObject.getString("IDACTIVIDAD")
-                        ,jsonObject.getString("IDLABOR")
+                        jsonObject.getString("CODIGO")
+                        ,jsonObject.getString("idlabor")
                         ,jsonObject.getString("DESCRIPCION")
                         ,jsonObject.getString("cantidad")
                     ))

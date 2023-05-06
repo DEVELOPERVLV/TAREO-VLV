@@ -21,7 +21,7 @@ class LaborCRUD(context: Context) {
 
         val contentValues = ContentValues()
 
-        contentValues.put(TareoContract.Companion.LaboresContract.IDACTIVIDAD, lab.idactividad)
+        contentValues.put(TareoContract.Companion.LaboresContract.CODIGO, lab.codigo)
         contentValues.put(TareoContract.Companion.LaboresContract.IDLABOR, lab.idlabor)
         contentValues.put(TareoContract.Companion.LaboresContract.DESCRIPCION, lab.descripcion)
         contentValues.put(TareoContract.Companion.LaboresContract.CANTIDAD, lab.cantidad)
@@ -34,14 +34,14 @@ class LaborCRUD(context: Context) {
 
     }
 
-    fun selectLabor(idactividad: String?):ArrayList<LaborModel>{
+    fun selectLabor(codigo: String?):ArrayList<LaborModel>{
 
         val item: ArrayList<LaborModel> = ArrayList()
 
         val db:SQLiteDatabase = helper?.readableDatabase!!
 
         val columnas = arrayOf(
-            TareoContract.Companion.LaboresContract.IDACTIVIDAD,
+            TareoContract.Companion.LaboresContract.CODIGO,
                 TareoContract.Companion.LaboresContract.IDLABOR,
                 TareoContract.Companion.LaboresContract.DESCRIPCION,
                 TareoContract.Companion.LaboresContract.CANTIDAD
@@ -50,8 +50,8 @@ class LaborCRUD(context: Context) {
         val c:Cursor = db.query(
                 TareoContract.Companion.LaboresContract.TBL_LAB,
                 columnas,
-                " idactividad = ? ",
-                arrayOf(idactividad ),
+                " codigo = ? ",
+                arrayOf(codigo),
                 null,
                 null,
                 null
@@ -60,7 +60,7 @@ class LaborCRUD(context: Context) {
 
         while (c.moveToNext()){
             item.add(LaborModel(
-                c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.LaboresContract.IDACTIVIDAD)),
+                c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.LaboresContract.CODIGO)),
                     c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.LaboresContract.IDLABOR)),
                     c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.LaboresContract.DESCRIPCION)),
                     c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.LaboresContract.CANTIDAD)))
@@ -73,14 +73,14 @@ class LaborCRUD(context: Context) {
 
     }
 
-    fun updLabor(idactividad: String?, ccostos: String?):ArrayList<LaborModel>{
+    fun updLabor(codigo: String?):ArrayList<LaborModel>{
 
         val item: ArrayList<LaborModel> = ArrayList()
 
         val db:SQLiteDatabase = helper?.readableDatabase!!
 
         val columnas = arrayOf(
-            TareoContract.Companion.LaboresContract.IDACTIVIDAD,
+            TareoContract.Companion.LaboresContract.CODIGO,
             TareoContract.Companion.LaboresContract.IDLABOR,
             TareoContract.Companion.LaboresContract.DESCRIPCION,
             TareoContract.Companion.LaboresContract.CANTIDAD
@@ -89,8 +89,8 @@ class LaborCRUD(context: Context) {
         val c:Cursor = db.query(
             TareoContract.Companion.LaboresContract.TBL_LAB,
             columnas,
-            " idactividad = ? ",
-            arrayOf(idactividad, ccostos),
+            " codigo = ? ",
+            arrayOf(codigo),
             null,
             null,
             null
@@ -99,7 +99,7 @@ class LaborCRUD(context: Context) {
 
         while (c.moveToNext()){
             item.add(LaborModel(
-                c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.LaboresContract.IDACTIVIDAD)),
+                c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.LaboresContract.CODIGO)),
                 c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.LaboresContract.IDLABOR)),
                 c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.LaboresContract.DESCRIPCION)),
                 c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.LaboresContract.CANTIDAD)))

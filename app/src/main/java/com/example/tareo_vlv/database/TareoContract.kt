@@ -25,6 +25,7 @@ class TareoContract {
                 const val NOMBRES = "nombres"
                 const val TOTALES = "totales"
                 const val SEDE = "sede"
+                const val OPROD = "oprod"
             }
         }
 
@@ -45,6 +46,16 @@ class TareoContract {
 
             }
         }
+
+        class OProdContract: BaseColumns{
+            companion object{
+                const val TBL_OPROD = "ordenProduccion"
+                const val IDOPROD = "IDOPROD"
+                const val IDCONSUMIDOR = "IDCONSUMIDOR"
+                const val DESCRIPCION = "descripcion"
+            }
+        }
+
         class ActivityContract: BaseColumns{
             companion object{
                 const val TBL_ACTIVITY = "actividad"
@@ -57,7 +68,7 @@ class TareoContract {
         class LaboresContract: BaseColumns{
             companion object{
                 const val TBL_LAB = "labores"
-                const val IDACTIVIDAD = "idactividad"
+                const val CODIGO = "codigo"
                 const val IDLABOR = "idlabor"
                 const val DESCRIPCION = "descripcion"
                 const val CANTIDAD = "cantidad"

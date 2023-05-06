@@ -27,7 +27,8 @@ class SQLiteOpenHelper(context: Context):
                 TareoContract.Companion.Entrada.STATUS + " TEXT, "+
                 TareoContract.Companion.Entrada.NOMBRES + " TEXT, "+
                 TareoContract.Companion.Entrada.TOTALES + " FLOAT, "+
-                TareoContract.Companion.Entrada.SEDE + " TEXT )"
+                TareoContract.Companion.Entrada.SEDE + " TEXT, "+
+                TareoContract.Companion.Entrada.OPROD + " TEXT )"
 
         const val rmvTblCompanyTareo = "DROP TABLE IF EXISTS " + TareoContract.Companion.Entrada.TBL_PRE
 
@@ -44,6 +45,16 @@ class SQLiteOpenHelper(context: Context):
 
         const val rmvTblCompanyCenter = "DROP TABLE IF EXISTS " + TareoContract.Companion.CcenterContract.TBL_CENTER
 
+
+        const val createTblOprod = "CREATE TABLE " + TareoContract.Companion.OProdContract.TBL_OPROD +
+                " (" + TareoContract.Companion.OProdContract.IDOPROD + " TEXT, " +
+                TareoContract.Companion.OProdContract.IDCONSUMIDOR + " TEXT, " +
+                TareoContract.Companion.OProdContract.DESCRIPCION + " TEXT )"
+
+        const val rmvTblCompanyOprod = "DROP TABLE IF EXISTS " + TareoContract.Companion.OProdContract.TBL_OPROD
+
+
+
         const val createTblActivity = "CREATE TABLE " + TareoContract.Companion.ActivityContract.TBL_ACTIVITY +
                 " (" + TareoContract.Companion.ActivityContract.IDACTIVIDAD + " TEXT, " +
                 TareoContract.Companion.ActivityContract.DESCRIPCION + " TEXT, " +
@@ -53,7 +64,7 @@ class SQLiteOpenHelper(context: Context):
         const val rmvTblCompanyActivity = "DROP TABLE IF EXISTS " + TareoContract.Companion.ActivityContract.TBL_ACTIVITY
 
         const val createTblLabores = "CREATE TABLE " + TareoContract.Companion.LaboresContract.TBL_LAB +
-                " (" + TareoContract.Companion.LaboresContract.IDACTIVIDAD + " TEXT, " +
+                " (" + TareoContract.Companion.LaboresContract.CODIGO + " TEXT, " +
                 TareoContract.Companion.LaboresContract.IDLABOR + " TEXT, " +
                 TareoContract.Companion.LaboresContract.DESCRIPCION + " TEXT, " +
                 TareoContract.Companion.LaboresContract.CANTIDAD + " TEXT )"
@@ -86,6 +97,7 @@ class SQLiteOpenHelper(context: Context):
         db?.execSQL(createTblTareo)
         db?.execSQL(createTblCultivo)
         db?.execSQL(createTblCenter)
+        db?.execSQL(createTblOprod)
         db?.execSQL(createTblActivity)
         db?.execSQL(createTblLabores)
         db?.execSQL(createTblTareador)
@@ -98,6 +110,7 @@ class SQLiteOpenHelper(context: Context):
         db.execSQL(rmvTblCompanyTareo)
         db.execSQL(rmvTblCompanyCultivo)
         db.execSQL(rmvTblCompanyCenter)
+        db.execSQL(rmvTblCompanyOprod)
         db.execSQL(rmvTblCompanyActivity)
         db.execSQL(rmvTblCompanyLabores)
         db.execSQL(rmvTblCompanyTareador)
