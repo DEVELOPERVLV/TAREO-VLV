@@ -1,22 +1,23 @@
 package com.example.tareo_vlv.actividades
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteException
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import com.example.tareo_vlv.R
 import com.example.tareo_vlv.crud.TareoCRUD
 import com.example.tareo_vlv.database.*
 import com.example.tareo_vlv.model.PreModel
 import com.example.tareo_vlv.model.TrabajadorModel
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -28,7 +29,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class PreRegister : AppCompatActivity() {
+class TareoSinOp : Fragment() {
 
     private lateinit var cultivo : Spinner
     private lateinit var costcenter: Spinner
@@ -57,137 +58,87 @@ class PreRegister : AppCompatActivity() {
     private lateinit var rendimiento: TextView
     private lateinit var cantidad: TextView
 
-    var toolbar:Toolbar? = null
+    var toolbar: Toolbar? = null
 
     private var inicioLabor: Double = 0.00
     private var finLabor: Double = 0.00
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+        arguments?.let {
 
-        //ESTE CODIGO OMITE EL MODO OSCURO EN LA APLICACION
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
 
-        //ESTE CODIGO MANTIENE LA PANTALLA ENCENDIDA MIENTRAS ESTE ABIERTA LA APLICACION
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val view:View = inflater.inflate(R.layout.fragment_tareo_con_o_p, container, false)
+        view.isFocusableInTouchMode = true
+        view.requestFocus()
+        val context: Context = requireContext()
+        culcrud = CultivoCRUD(context)
+        costcrud = CcenterCRUD(context)
+        acrud = ActiviyCRUD(context)
+        lcrud = LaborCRUD(context)
+        tcrud = TrabajadorCRUD(context)
+        tarcrud = TareadorCRUD(context)
 
-        setContentView(R.layout.activity_pre_register)
-        supportActionBar?.hide()
+        initView(view)
+        initSpinner(context)
 
-        culcrud = CultivoCRUD(this)
-        costcrud = CcenterCRUD(this)
-        acrud = ActiviyCRUD(this)
-        lcrud = LaborCRUD(this)
-        tcrud = TrabajadorCRUD(this)
-        tarcrud = TareadorCRUD(this)
-
-        initView()
-        initSpinner(this)
-        initToolbar()
-        blockSpinner()
+        blockSpinner(view)
         startTime()
         endTime()
 
         addFood()
 
-        crud = TareoCRUD(this)
-        dbhelper = SQLiteOpenHelper(this)
+        crud = TareoCRUD(context)
+        dbhelper = SQLiteOpenHelper(context)
 
         btnPre.setOnClickListener {
             if(costcenter.equals("")){
-                Toast.makeText(this, "Descargue/Actualice datos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Descargue/Actualice datos", Toast.LENGTH_SHORT).show()
             }else{
                 addPre()
             }
 
         }
 
-        btnScanner.setOnClickListener { initScanner() }
+        btnScanner.setOnClickListener { initScanner(context) }
+        initView(view)
 
+        return view
     }
 
-    fun initToolbar(){
+    private fun initView(view: View){
 
-        toolbar = findViewById(R.id.my_toolbar)
-        toolbar?.setLogo(R.mipmap.ic_principal_icon_fondo_round)
-        supportActionBar?.setDisplayUseLogoEnabled(false)
-        setSupportActionBar(toolbar)
-
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-
-        menuInflater.inflate(R.menu.menu_principal, menu)
-
-        return super.onCreateOptionsMenu(menu)
-
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean{
-
-        when(item.itemId){
-
-            R.id.icon_sync -> {
-                val intent = Intent(this, SyncSuccess()::class.java)
-                startActivity(intent)
-                return true
-
-            }
-            R.id.icon_view -> {
-                val intent = Intent(this, UpdateTareo()::class.java)
-                startActivity(intent)
-                return true
-
-            }
-
-            R.id.icon_logout -> {
-
-                MaterialAlertDialogBuilder(this)
-                    .setTitle("Alerta")
-                    .setMessage("¿Desea cerrar Sesión?")
-                    .setNegativeButton("No") { dialog, which -> showSnackBar("Cancelado") }
-                    .setPositiveButton("Si") { dialog, which ->
-                        showSnackBar("Sesión cerrada")
-                        logout()
-                    }
-                    .show()
-
-                return true
-            }
-
-            else -> {return super.onOptionsItemSelected(item)}
-
-        }
-
-    }
-
-    private fun initView(){
-
-        cultivo = findViewById(R.id.cultivo)
-        costcenter = findViewById(R.id.costProd)
-        activity = findViewById(R.id.activity)
-        timeI = findViewById(R.id.timeI)
-        hourIni = findViewById(R.id.hourIni)
-        horaInicio = findViewById(R.id.horaInicio)
-        timeF = findViewById(R.id.timeF)
-        hourFin = findViewById(R.id.hourFin)
-        timeE = findViewById(R.id.timeE)
-        hourE = findViewById(R.id.hourE)
-        job = findViewById(R.id.job)
-        dniT = findViewById(R.id.dniT)
-        advanceT = findViewById(R.id.advanceT)
-        btnPre = findViewById(R.id.btnPre)
-        btnScanner = findViewById(R.id.btnScanner)
-        rendimiento = findViewById(R.id.rendimiento)
-        cantidad = findViewById(R.id.cantidad)
+        cultivo = view.findViewById(R.id.cultivo)
+        costcenter = view.findViewById(R.id.costProd)
+        activity = view.findViewById(R.id.activity)
+        timeI = view.findViewById(R.id.timeI)
+        hourIni = view.findViewById(R.id.hourIni)
+        horaInicio = view.findViewById(R.id.horaInicio)
+        timeF = view.findViewById(R.id.timeF)
+        hourFin = view.findViewById(R.id.hourFin)
+        timeE = view.findViewById(R.id.timeE)
+        hourE = view.findViewById(R.id.hourE)
+        job = view.findViewById(R.id.job)
+        dniT = view.findViewById(R.id.dniT)
+        advanceT = view.findViewById(R.id.advanceT)
+        btnPre = view.findViewById(R.id.btnPre)
+        btnScanner = view.findViewById(R.id.btnScanner)
+        rendimiento = view.findViewById(R.id.rendimiento)
+        cantidad = view.findViewById(R.id.cantidad)
 
     }
 
     private fun initSpinner(context: Context) {
 
         arrayListOf("No se encuentra ningún valor")
-        val sharedPref = getSharedPreferences("password", Context.MODE_PRIVATE)
+        val sharedPref = context.getSharedPreferences("password", Context.MODE_PRIVATE)
         val savedString = sharedPref.getString("STRING_KEY", null)
         val userRegistra = savedString.toString()
 
@@ -206,7 +157,7 @@ class PreRegister : AppCompatActivity() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val idcultivo = cultivos[p2].idCultivo.toString()
                 println("area:::"+idcultivo)
-                initSpinnerCCostos(idcultivo)
+                initSpinnerCCostos(idcultivo, context)
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -218,7 +169,7 @@ class PreRegister : AppCompatActivity() {
 
     }
 
-    private fun initSpinnerCCostos(area: String){
+    private fun initSpinnerCCostos(area: String, context: Context){
         val campana = costcrud.selectCCenter(area)
         val lista = arrayListOf<String>()
         for (i in 0 until campana.size) {
@@ -228,14 +179,14 @@ class PreRegister : AppCompatActivity() {
         }
 
         val adaptador =
-            ArrayAdapter(this, R.layout.spinner_list, lista)
+            ArrayAdapter(context, R.layout.spinner_list, lista)
         costcenter.adapter = adaptador
 
         costcenter.onItemSelectedListener = object:  AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val ccostos = campana[p2].idconsumidor.toString()
 
-                initSpinnerFase(ccostos.trim())
+                initSpinnerFase(ccostos.trim(), context)
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -246,7 +197,7 @@ class PreRegister : AppCompatActivity() {
         }
     }
 
-    private fun initSpinnerFase(ccostos: String){
+    private fun initSpinnerFase(ccostos: String, context: Context){
         val actividad = acrud.selectActivity(ccostos)
 
         Log.d("Actividades ::", actividad.toString())
@@ -259,7 +210,7 @@ class PreRegister : AppCompatActivity() {
 
         }
 
-        val adapter = ArrayAdapter(this, R.layout.spinner_list, listaCampania)
+        val adapter = ArrayAdapter(context, R.layout.spinner_list, listaCampania)
         activity.adapter = adapter
 
         activity.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
@@ -268,7 +219,7 @@ class PreRegister : AppCompatActivity() {
                 println("FASES:::" + fase)
                 val rendimientoAct = actividad[p2].rendimiento.toString()
 
-                initSpinnerJob(rendimientoAct, fase)
+                initSpinnerJob(rendimientoAct, fase, context)
 
             }
 
@@ -279,9 +230,9 @@ class PreRegister : AppCompatActivity() {
         }
 
 
-        }
+    }
 
-    private fun initSpinnerJob(rendimientoAct: String, fase: String){
+    private fun initSpinnerJob(rendimientoAct: String, fase: String, context: Context){
 
 
         val labor = lcrud.selectLabor(fase)
@@ -295,7 +246,7 @@ class PreRegister : AppCompatActivity() {
 
         }
 
-        val adapterLab = ArrayAdapter( this, R.layout.spinner_list, listaLabor)
+        val adapterLab = ArrayAdapter(context, R.layout.spinner_list, listaLabor)
         job.adapter = adapterLab
 
         job.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -322,9 +273,9 @@ class PreRegister : AppCompatActivity() {
         }
     }
 
-    private fun blockSpinner(){
+    private fun blockSpinner(view: View){
 
-        val block = findViewById<SwitchMaterial>(R.id.block)
+        val block = view.findViewById<SwitchMaterial>(R.id.block)
         block?.setOnCheckedChangeListener{ _, isChecked ->
             if(isChecked){
                 cultivo.isEnabled = false
@@ -341,8 +292,8 @@ class PreRegister : AppCompatActivity() {
 
     }
 
-    private fun initScanner(){
-        val integrator = IntentIntegrator(this)
+    private fun initScanner(context: Context){
+        val integrator = IntentIntegrator(context as Activity?)
         integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES)
         integrator.setTorchEnabled(true)
         integrator.setBeepEnabled(true)
@@ -355,22 +306,22 @@ class PreRegister : AppCompatActivity() {
         val result: IntentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
 
         if(result.contents == null){
-          Toast.makeText(this, "Cancelado", Toast.LENGTH_SHORT).show()
-          }else{
-              dniT.setText(result.contents)
+            Toast.makeText(context, "Cancelado", Toast.LENGTH_SHORT).show()
+        }else{
+            dniT.setText(result.contents)
 
-              val documento = result.contents
-              val personal = getTrabajador(documento)
-              if(personal){
-                  val personalR: TrabajadorModel? = tcrud.selectPersonal(documento)
-                  val nombre = personalR?.trabajador.toString()
-                  if(nombre != "null")
-                  Toast.makeText(this, personalR?.trabajador.toString(), Toast.LENGTH_SHORT).show()
-              }else{
-                  Toast.makeText(this, documento, Toast.LENGTH_SHORT).show()
-              }
+            val documento = result.contents
+            val personal = getTrabajador(documento)
+            if(personal){
+                val personalR: TrabajadorModel? = tcrud.selectPersonal(documento)
+                val nombre = personalR?.trabajador.toString()
+                if(nombre != "null")
+                    Toast.makeText(context, personalR?.trabajador.toString(), Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(context, documento, Toast.LENGTH_SHORT).show()
+            }
 
-          }
+        }
     }
 
 
@@ -383,7 +334,7 @@ class PreRegister : AppCompatActivity() {
                 .setTimeFormat(TimeFormat.CLOCK_12H)
                 .build()
 
-            materialTimePicker.show(supportFragmentManager, "PreRegister")
+            materialTimePicker.show(parentFragmentManager, "PreRegister")
             materialTimePicker.addOnPositiveButtonClickListener{
                 val pickedHour: Int = materialTimePicker.hour
                 val pickedMinute: Int = materialTimePicker.minute
@@ -432,7 +383,7 @@ class PreRegister : AppCompatActivity() {
                 .setTimeFormat(TimeFormat.CLOCK_12H)
                 .build()
 
-            materialTimePicker.show(supportFragmentManager, "PreRegister")
+            materialTimePicker.show(parentFragmentManager, "PreRegister")
             materialTimePicker.addOnPositiveButtonClickListener {
                 val pickedHour: Int = materialTimePicker.hour
                 val pickedMinute: Int = materialTimePicker.minute
@@ -505,8 +456,8 @@ class PreRegister : AppCompatActivity() {
 
     private fun addPre(){
 
-        val sharedPref = getSharedPreferences("password",Context.MODE_PRIVATE)
-        val savedString = sharedPref.getString("STRING_KEY", null)
+        val sharedPref = context?.getSharedPreferences("password", Context.MODE_PRIVATE)
+        val savedString = sharedPref?.getString("STRING_KEY", null)
         val userRegistra = savedString.toString()
         val dni = dniT.text.toString()
         val activity = activity.selectedItem.toString()
@@ -525,74 +476,78 @@ class PreRegister : AppCompatActivity() {
         val strHour: String = shf.format(cal.time)
         val estado = 1
         val totales = validaHora(inicioLabor, finLabor, timeE.toDouble())
-        val savedSede = sharedPref.getString("SEDE_KEY", null)
+        val savedSede = sharedPref?.getString("SEDE_KEY", null)
         val sedeTareo = savedSede.toString()
 
         if(dni.isEmpty() || timeI.isEmpty() || timeF.isEmpty()){
 
-            Toast.makeText(this, "No debe de tener DNI, Fecha Inicio y Fin Vacío", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "No debe de tener DNI, Fecha Inicio y Fin Vacío", Toast.LENGTH_SHORT).show()
 
         }else{
 
             try{
-                    val trabajador = getTrabajador(dni)
-                        if(trabajador){
-                            val personalR: TrabajadorModel? = tcrud.selectPersonal(dni)
-                            val nombre = personalR?.trabajador.toString()
-                            Log.d("error ::", nombre)
-                            if(timeF.trim().toFloat() < timeI.trim().toFloat()){
-                                Toast.makeText(this, "La hora de inicio no puede ser menor a la hora de fin, registre en formato 24 horas", Toast.LENGTH_LONG).show()
+                val trabajador = getTrabajador(dni)
+                if(trabajador){
+                    val personalR: TrabajadorModel? = tcrud.selectPersonal(dni)
+                    val nombre = personalR?.trabajador.toString()
+                    Log.d("error ::", nombre)
+                    if(timeF.trim().toFloat() < timeI.trim().toFloat()){
+                        Toast.makeText(context, "La hora de inicio no puede ser menor a la hora de fin, registre en formato 24 horas", Toast.LENGTH_LONG).show()
+                        clearEditText()
+
+                    }else {
+
+                        if(nombre == "null"){
+
+                            Toast.makeText(context, "Pre registro agregado trabajador " + dni + " FALTA REGISTRAR", Toast.LENGTH_SHORT).show()
+                            val status = crud.insertPre(
+                                PreModel(
+                                    id = null,user = userRegistra.trim(), costcenter = ccostos, activity = phase,
+                                    job = job, advance = advance.trim(), timeI = timeI.trim(), timeF = timeF.trim(), timeE = timeE.trim(),
+                                    dni = dni.trim(), dia = strDate, hora = strHour, estado = estado, nombre = "Usuario no registrado o valide DNI", totales = totales.toFloat(), sede = sedeTareo, oprod = "")
+                            )
+
+                            inicioLabor+=0.00
+                            finLabor+=0.00
+                            if(status > -1){
+
                                 clearEditText()
 
-                            }else {
-
-                                if(nombre == "null"){
-
-                                    Toast.makeText(this, "Pre registro agregado trabajador " + dni + " FALTA REGISTRAR", Toast.LENGTH_SHORT).show()
-                                    val status = crud.insertPre(PreModel(
-                                        id = null,user = userRegistra.trim(), costcenter = ccostos, activity = phase,
-                                        job = job, advance = advance.trim(), timeI = timeI.trim(), timeF = timeF.trim(), timeE = timeE.trim(),
-                                        dni = dni.trim(), dia = strDate, hora = strHour, estado = estado, nombre = "Usuario no registrado o valide DNI", totales = totales.toFloat(), sede = sedeTareo, oprod = ""))
-
-                                    inicioLabor+=0.00
-                                    finLabor+=0.00
-                                    if(status > -1){
-
-                                        clearEditText()
-
-                                    }else{
-                                        Toast.makeText(this, "No se ha registrado", Toast.LENGTH_SHORT).show()
-                                    }
-
-                                }else{
-
-                                    Toast.makeText(this, "Pre registro agregado trabajador: " + nombre, Toast.LENGTH_SHORT).show()
-
-                                    val status = crud.insertPre(PreModel(
-                                        id = null,user = userRegistra.trim(), costcenter = ccostos, activity = phase,
-                                        job = job, advance = advance.trim(), timeI = timeI.trim(), timeF = timeF.trim(), timeE = timeE.trim(),
-                                        dni = dni.trim(), dia = strDate, hora = strHour, estado = estado, nombre = nombre, totales = totales.toFloat(), sede = sedeTareo, oprod = ""))
-
-                                    inicioLabor+=0.00
-                                    finLabor+=0.00
-
-                                    if(status > -1){
-
-                                        clearEditText()
-
-                                    }else{
-                                        Toast.makeText(this, "No se ha registrado", Toast.LENGTH_SHORT).show()
-                                    }
-
-                                }
+                            }else{
+                                Toast.makeText(context, "No se ha registrado", Toast.LENGTH_SHORT).show()
                             }
 
-
                         }else{
-                            Toast.makeText(this, "Trabajador no encontrado en Nisira", Toast.LENGTH_SHORT).show()
-                        }
 
-                }catch (e: SQLiteException){
+                            Toast.makeText(context, "Pre registro agregado trabajador: " + nombre, Toast.LENGTH_SHORT).show()
+
+                            val status = crud.insertPre(
+                                PreModel(
+                                    id = null,user = userRegistra.trim(), costcenter = ccostos, activity = phase,
+                                    job = job, advance = advance.trim(), timeI = timeI.trim(), timeF = timeF.trim(), timeE = timeE.trim(),
+                                    dni = dni.trim(), dia = strDate, hora = strHour, estado = estado, nombre = nombre, totales = totales.toFloat(), sede = sedeTareo, oprod = "")
+                            )
+
+                            inicioLabor+=0.00
+                            finLabor+=0.00
+
+                            if(status > -1){
+
+                                clearEditText()
+
+                            }else{
+                                Toast.makeText(context, "No se ha registrado", Toast.LENGTH_SHORT).show()
+                            }
+
+                        }
+                    }
+
+
+                }else{
+                    Toast.makeText(context, "Trabajador no encontrado en Nisira", Toast.LENGTH_SHORT).show()
+                }
+
+            }catch (e: SQLiteException){
                 e.printStackTrace()
 
             }
@@ -617,13 +572,13 @@ class PreRegister : AppCompatActivity() {
     }
 
     fun logout(){
-        val sharedPref = getSharedPreferences("password",Context.MODE_PRIVATE)
-        val savedString = sharedPref.edit().remove("STRING_KEY").commit()
+        val sharedPref = context?.getSharedPreferences("password", Context.MODE_PRIVATE)
+        val savedString = sharedPref?.edit()?.remove("STRING_KEY")?.commit()
         Log.d("Preferences::",savedString.toString())
-        if (savedString){
-            val intent = Intent(this, MainActivity()::class.java)
+        if (savedString!!){
+            val intent = Intent(context, MainActivity()::class.java)
             startActivity(intent)
-            finish()
+
         }
     }
 
@@ -638,18 +593,6 @@ class PreRegister : AppCompatActivity() {
         return (horaF - horaI) - (dsctos)
     }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if(keyCode == 4){
-            val intent = Intent(this, Principal()::class.java)
-            startActivity(intent)
-            finish()
-        }
 
-        return super.onKeyDown(keyCode, event)
-    }
-
-    private fun showSnackBar(msg: String){
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-    }
 
 }

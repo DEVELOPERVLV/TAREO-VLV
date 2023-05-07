@@ -52,7 +52,7 @@ class TareoContract {
                 const val TBL_OPROD = "ordenProduccion"
                 const val IDOPROD = "IDOPROD"
                 const val IDCONSUMIDOR = "IDCONSUMIDOR"
-                const val DESCRIPCION = "descripcion"
+                const val IDMANUAL = "idmanual"
             }
         }
 

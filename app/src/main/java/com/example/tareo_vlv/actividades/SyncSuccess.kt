@@ -78,22 +78,27 @@ class SyncSuccess : AppCompatActivity() {
                         measureTimeMillis {
                             val job1 = launch {
                                 delay(500L)
-                                costosHTTP(userRegistra)
+                                trabajadorHTTP()
                             }
                             val job2 = launch {
                                 delay(1000L)
-
+                                costosHTTP(userRegistra)
                             }
                             val job3 = launch {
                                 delay(1500L)
-                                trabajadorHTTP()
+                                oprodHTTP()
                             }
                             val job4 = launch {
                                 delay(2000L)
+                                activityHTTP()
+
+                            }
+                            val job5 = launch {
+                                delay(2500L)
                                 laboresHTTP()
                             }
 
-                            joinAll(job1, job2, job3, job4)
+                            joinAll(job1, job2, job3, job4, job5)
 
                         }
                     }
@@ -143,7 +148,7 @@ class SyncSuccess : AppCompatActivity() {
 
             Request.Method.GET, "http://199.241.218.53:60000/apiTareoEsp/apiAreaLC.php?funcion=obtenerCultivos&dni=$dni",
             { response ->
-                insertCLA(response)
+
             },
             {
                 a+=0
@@ -211,8 +216,6 @@ class SyncSuccess : AppCompatActivity() {
                         ,jsonObject.getString("ccostos")
                     ))
 
-                    oprodHTTP(jsonObject.getString("ccostos"))
-
                 }
 
             }.start()
@@ -221,13 +224,13 @@ class SyncSuccess : AppCompatActivity() {
         }
     }
 
-    private fun oprodHTTP(ccostos: String){
+    private fun oprodHTTP(){
         val queue = Volley.newRequestQueue(this)
         val stringRequest = StringRequest(
             Request.Method.GET,
-            "",{
+            "http://199.241.218.53:60000/apiTareoEspTI/apiOprod.php",{
                 response ->
-                insertOprod(ccostos)
+                insertOprod(response)
             }, {error ->
 
                 error.message?.let { Log.d("HTTP_REQUEST", it)}
@@ -248,9 +251,9 @@ class SyncSuccess : AppCompatActivity() {
                     val jsonObject = jsonArray.getJSONObject(i)
 
                     opcrud.insertOProd(OProdModel(
-                        jsonObject.getString(""),
-                        jsonObject.getString(""),
-                        jsonObject.getString("")
+                        jsonObject.getString("IDORDENPRO"),
+                        jsonObject.getString("idconsumidor"),
+                        jsonObject.getString("IDMANUAL")
                         ))
                 }
 
@@ -260,11 +263,11 @@ class SyncSuccess : AppCompatActivity() {
         }
     }
 
-    private fun activityHTTP(ccostos: String){
+    private fun activityHTTP(){
         val queue = Volley.newRequestQueue(this)
         val stringRequest = StringRequest(
             Request.Method.GET,
-            "http://199.241.218.53:60000/apiTareoEsp/apiFase.php?funcion=obtenerActividad&ccostos=$ccostos",
+            "http://199.241.218.53:60000/apiTareoEspTI/apiFase.php",
             { response ->
                 insertFase(response)
             }, {error ->

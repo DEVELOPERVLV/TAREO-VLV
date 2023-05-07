@@ -1,4 +1,4 @@
-package com.example.tareo_vlv
+package com.example.tareo_vlv.actividades
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import com.example.tareo_vlv.R
 import com.example.tareo_vlv.actividades.PreRegister
 import com.example.tareo_vlv.actividades.tareoSOP
 
@@ -30,16 +31,12 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
 
         val view:View = inflater.inflate(R.layout.fragment_home, container, false)
-        conOP = view.findViewById(R.id.conOP)
-        sinOP = view.findViewById(R.id.sinOP)
 
-        sinOP.setOnClickListener{
-            view.context.startActivity(Intent(view.context, tareoSOP::class.java))
-        }
+        initView(view)
 
-        conOP.setOnClickListener{
-            view.context.startActivity(Intent(view.context, PreRegister::class.java))
-        }
+        conOp()
+
+        sinOp()
 
 
         return view
@@ -47,6 +44,25 @@ class HomeFragment : Fragment() {
 
 
 
+    }
+
+    private fun initView(view: View){
+        conOP = view.findViewById(R.id.conOP)
+        sinOP = view.findViewById(R.id.sinOP)
+    }
+
+    private fun sinOp() {
+        sinOP.setOnClickListener{
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container, TareoSinOp())?.commit()
+        }
+    }
+
+    private fun conOp(){
+        conOP.setOnClickListener{
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container, TareoConOP())?.commit()
+        }
     }
 
 }

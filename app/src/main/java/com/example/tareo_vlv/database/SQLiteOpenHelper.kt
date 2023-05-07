@@ -49,7 +49,7 @@ class SQLiteOpenHelper(context: Context):
         const val createTblOprod = "CREATE TABLE " + TareoContract.Companion.OProdContract.TBL_OPROD +
                 " (" + TareoContract.Companion.OProdContract.IDOPROD + " TEXT, " +
                 TareoContract.Companion.OProdContract.IDCONSUMIDOR + " TEXT, " +
-                TareoContract.Companion.OProdContract.DESCRIPCION + " TEXT )"
+                TareoContract.Companion.OProdContract.IDMANUAL + " TEXT )"
 
         const val rmvTblCompanyOprod = "DROP TABLE IF EXISTS " + TareoContract.Companion.OProdContract.TBL_OPROD
 

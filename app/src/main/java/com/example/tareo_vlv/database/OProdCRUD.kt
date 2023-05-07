@@ -24,7 +24,7 @@ class OProdCRUD(context: Context) {
 
         contentValues.put(TareoContract.Companion.OProdContract.IDOPROD, op.idoprod)
         contentValues.put(TareoContract.Companion.OProdContract.IDCONSUMIDOR, op.idconsumidor)
-        contentValues.put(TareoContract.Companion.OProdContract.DESCRIPCION, op.descripcion)
+        contentValues.put(TareoContract.Companion.OProdContract.IDMANUAL, op.idmanual)
 
         val success = db.insert(TareoContract.Companion.OProdContract.TBL_OPROD, null, contentValues)
 
@@ -41,7 +41,7 @@ class OProdCRUD(context: Context) {
         val columnas = arrayOf(
             TareoContract.Companion.OProdContract.IDOPROD,
             TareoContract.Companion.OProdContract.IDCONSUMIDOR,
-            TareoContract.Companion.OProdContract.DESCRIPCION
+            TareoContract.Companion.OProdContract.IDMANUAL
         )
 
         val c: Cursor = db.query(
@@ -59,7 +59,7 @@ class OProdCRUD(context: Context) {
                 OProdModel(
                 c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.OProdContract.IDOPROD)),
                     c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.OProdContract.IDCONSUMIDOR)),
-                    c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.OProdContract.DESCRIPCION))
+                    c.getString(c.getColumnIndexOrThrow(TareoContract.Companion.OProdContract.IDMANUAL))
             )
             )
         }

@@ -46,7 +46,7 @@ class UpdateTareo : AppCompatActivity() {
 
         setContentView(R.layout.activity_update_tareo)
 
-        initToolbar()
+
         listTareo = findViewById(R.id.listTareo)
         fButton = findViewById(R.id.fButton)
         listTareo.setHasFixedSize(true)
@@ -102,7 +102,6 @@ class UpdateTareo : AppCompatActivity() {
     }
 
 
-
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if(keyCode == 4){
             val intent = Intent(applicationContext, PreRegister::class.java)
@@ -111,10 +110,5 @@ class UpdateTareo : AppCompatActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
-    private fun initToolbar(){
-        toolbar = findViewById(R.id.sToolbar)
-        toolbar?.setLogo(R.mipmap.ic_principal_icon_fondo_round)
-        supportActionBar?.setDisplayUseLogoEnabled(false)
-        setSupportActionBar(toolbar)
-    }
+
 }

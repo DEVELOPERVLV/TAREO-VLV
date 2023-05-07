@@ -10,7 +10,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/dashboard"
-        android:name="com.example.tareo_vlv.HomeFragment"
+        android:name="com.example.tareo_vlv.actividades.HomeFragment"
         />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tareoConOp"
+        android:name="com.example.tareo_vlv.actividades.TareoConOP"
+        />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tareoSinOp"
+        android:name="com.example.tareo_vlv.actividades.TareoSinOp"
+        />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/updateTareos"
+        android:name="com.example.tareo_vlv.actividades.UpdateTareos"
+        />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/sendTareos"
+        android:name="com.example.tareo_vlv.actividades.SendTareos"
+        />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

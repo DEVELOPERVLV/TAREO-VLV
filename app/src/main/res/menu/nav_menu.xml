@@ -31,6 +31,11 @@
             android:title="Ver Tareos"/>
 
         <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="Configuracion"/>
+
+        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_baseline_live_help_24"
             android:title="Ayuda"/>
