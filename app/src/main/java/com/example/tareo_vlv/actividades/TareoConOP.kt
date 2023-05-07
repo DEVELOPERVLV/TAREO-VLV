@@ -271,15 +271,18 @@ class TareoConOP : Fragment() {
         val block = view.findViewById<SwitchMaterial>(R.id.block)
         block?.setOnCheckedChangeListener{ _, isChecked ->
             if(isChecked){
+
                 costCenter.isEnabled = false
                 oProd.isEnabled = false
                 activity.isEnabled = false
                 job.isEnabled = false
+
             }else{
                 costCenter.isEnabled = true
                 oProd.isEnabled = true
                 activity.isEnabled = true
                 job.isEnabled = true
+
             }
         }
 
