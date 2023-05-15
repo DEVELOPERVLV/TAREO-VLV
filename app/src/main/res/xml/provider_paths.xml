@@ -1,0 +1,32 @@
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-files-path
+        name="my_images"
+        path="Android/data//files/Pictures"/>
+    
+    <external-files-path
+        name="my_debug_images"
+        path="/storage/emulated/0/Android/data//files/Pictures/"/>
+    
+    <external-files-path
+        name="my_root_images"
+        path="/"/>
+    <external-path
+        name="Download"
+        path="." />
+    <external-files-path
+        name="external_files"
+        path="." />
+    <cache-path
+        name="cache"
+        path="." />
+    <external-cache-path
+        name="external_cache"
+        path="." />
+    <files-path
+        name="files"
+        path="." />
+    <external-path
+        name="external_storage_root"
+        path="." />
+
+</paths>

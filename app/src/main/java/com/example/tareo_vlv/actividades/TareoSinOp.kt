@@ -31,21 +31,21 @@ import java.util.*
 
 class TareoSinOp : Fragment() {
 
-    private lateinit var cultivo : Spinner
-    private lateinit var costcenter: Spinner
-    private lateinit var activity: Spinner
-    private lateinit var job: Spinner
-    private lateinit var dniT: TextInputEditText
-    private lateinit var advanceT: TextInputEditText
-    private lateinit var timeI : Button
-    private lateinit var horaInicio: TextInputLayout
-    private lateinit var hourIni: TextInputEditText
-    private lateinit var timeF : Button
-    private lateinit var hourFin : TextInputEditText
-    private lateinit var timeE: Button
-    private lateinit var hourE: TextInputEditText
-    private lateinit var btnPre: Button
-    private lateinit var btnScanner: Button
+    private lateinit var cultivoSOP : Spinner
+    private lateinit var costcenterSOP: Spinner
+    private lateinit var activitySOP: Spinner
+    private lateinit var jobSOP: Spinner
+    private lateinit var dniTSOP: TextInputEditText
+    private lateinit var advanceTSOP: TextInputEditText
+    private lateinit var timeISOP : Button
+    private lateinit var horaInicioSOP: TextInputLayout
+    private lateinit var hourIniSOP: TextInputEditText
+    private lateinit var timeFSOP : Button
+    private lateinit var hourFinSOP : TextInputEditText
+    private lateinit var timeESOP: Button
+    private lateinit var hourESOP: TextInputEditText
+    private lateinit var btnPreSOP: Button
+    private lateinit var btnScannerSOP: Button
 
     private lateinit var crud: TareoCRUD
     private lateinit var culcrud: CultivoCRUD
@@ -75,7 +75,7 @@ class TareoSinOp : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view:View = inflater.inflate(R.layout.fragment_tareo_con_o_p, container, false)
+        val view:View = inflater.inflate(R.layout.fragment_tareo_sin_op, container, false)
         view.isFocusableInTouchMode = true
         view.requestFocus()
         val context: Context = requireContext()
@@ -98,8 +98,8 @@ class TareoSinOp : Fragment() {
         crud = TareoCRUD(context)
         dbhelper = SQLiteOpenHelper(context)
 
-        btnPre.setOnClickListener {
-            if(costcenter.equals("")){
+        btnPreSOP.setOnClickListener {
+            if(costcenterSOP.equals("")){
                 Toast.makeText(context, "Descargue/Actualice datos", Toast.LENGTH_SHORT).show()
             }else{
                 addPre()
@@ -107,7 +107,7 @@ class TareoSinOp : Fragment() {
 
         }
 
-        btnScanner.setOnClickListener { initScanner(context) }
+        btnScannerSOP.setOnClickListener { initScanner(context) }
         initView(view)
 
         return view
@@ -115,23 +115,23 @@ class TareoSinOp : Fragment() {
 
     private fun initView(view: View){
 
-        cultivo = view.findViewById(R.id.cultivo)
-        costcenter = view.findViewById(R.id.costProd)
-        activity = view.findViewById(R.id.activity)
-        timeI = view.findViewById(R.id.timeI)
-        hourIni = view.findViewById(R.id.hourIni)
-        horaInicio = view.findViewById(R.id.horaInicio)
-        timeF = view.findViewById(R.id.timeF)
-        hourFin = view.findViewById(R.id.hourFin)
-        timeE = view.findViewById(R.id.timeE)
-        hourE = view.findViewById(R.id.hourE)
-        job = view.findViewById(R.id.job)
-        dniT = view.findViewById(R.id.dniT)
-        advanceT = view.findViewById(R.id.advanceT)
-        btnPre = view.findViewById(R.id.btnPre)
-        btnScanner = view.findViewById(R.id.btnScanner)
-        rendimiento = view.findViewById(R.id.rendimiento)
-        cantidad = view.findViewById(R.id.cantidad)
+        cultivoSOP = view.findViewById(R.id.cultivoSOP)
+        costcenterSOP = view.findViewById(R.id.costCenterSOP)
+        activitySOP = view.findViewById(R.id.activitySOP)
+        timeISOP = view.findViewById(R.id.timeISOP)
+        hourIniSOP = view.findViewById(R.id.hourIniSOP)
+        horaInicioSOP = view.findViewById(R.id.horaInicioSOP)
+        timeFSOP = view.findViewById(R.id.timeFSOP)
+        hourFinSOP = view.findViewById(R.id.hourFinSOP)
+        timeESOP = view.findViewById(R.id.timeESOP)
+        hourESOP = view.findViewById(R.id.hourESOP)
+        jobSOP = view.findViewById(R.id.jobSOP)
+        dniTSOP = view.findViewById(R.id.dniTSOP)
+        advanceTSOP = view.findViewById(R.id.advanceTSOP)
+        btnPreSOP = view.findViewById(R.id.btnPreSOP)
+        btnScannerSOP = view.findViewById(R.id.btnScannerSOP)
+        rendimiento = view.findViewById(R.id.rendimientoSOP)
+        cantidad = view.findViewById(R.id.cantidadSOP)
 
     }
 
@@ -151,9 +151,9 @@ class TareoSinOp : Fragment() {
         }
 
         val adaptadorcul = ArrayAdapter(context, R.layout.spinner_list, listCultivo)
-        cultivo.adapter = adaptadorcul
+        cultivoSOP.adapter = adaptadorcul
 
-        cultivo.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        cultivoSOP.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val idcultivo = cultivos[p2].idCultivo.toString()
                 println("area:::"+idcultivo)
@@ -180,9 +180,9 @@ class TareoSinOp : Fragment() {
 
         val adaptador =
             ArrayAdapter(context, R.layout.spinner_list, lista)
-        costcenter.adapter = adaptador
+        costcenterSOP.adapter = adaptador
 
-        costcenter.onItemSelectedListener = object:  AdapterView.OnItemSelectedListener {
+        costcenterSOP.onItemSelectedListener = object:  AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val ccostos = campana[p2].idconsumidor.toString()
 
@@ -211,9 +211,9 @@ class TareoSinOp : Fragment() {
         }
 
         val adapter = ArrayAdapter(context, R.layout.spinner_list, listaCampania)
-        activity.adapter = adapter
+        activitySOP.adapter = adapter
 
-        activity.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+        activitySOP.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val fase = actividad[p2].idactividad.toString()
                 println("FASES:::" + fase)
@@ -247,9 +247,9 @@ class TareoSinOp : Fragment() {
         }
 
         val adapterLab = ArrayAdapter(context, R.layout.spinner_list, listaLabor)
-        job.adapter = adapterLab
+        jobSOP.adapter = adapterLab
 
-        job.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        jobSOP.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val seleccionLab = labor[p2].idlabor.toString()
                 val cantidades = labor[p2].cantidad.toString()
@@ -278,15 +278,15 @@ class TareoSinOp : Fragment() {
         val block = view.findViewById<SwitchMaterial>(R.id.block)
         block?.setOnCheckedChangeListener{ _, isChecked ->
             if(isChecked){
-                cultivo.isEnabled = false
-                costcenter.isEnabled = false
-                activity.isEnabled = false
-                job.isEnabled = false
+                cultivoSOP.isEnabled = false
+                costcenterSOP.isEnabled = false
+                activitySOP.isEnabled = false
+                jobSOP.isEnabled = false
             }else{
-                cultivo.isEnabled = true
-                costcenter.isEnabled = true
-                activity.isEnabled = true
-                job.isEnabled = true
+                cultivoSOP.isEnabled = true
+                costcenterSOP.isEnabled = true
+                activitySOP.isEnabled = true
+                jobSOP.isEnabled = true
             }
         }
 
@@ -308,7 +308,7 @@ class TareoSinOp : Fragment() {
         if(result.contents == null){
             Toast.makeText(context, "Cancelado", Toast.LENGTH_SHORT).show()
         }else{
-            dniT.setText(result.contents)
+            dniTSOP.setText(result.contents)
 
             val documento = result.contents
             val personal = getTrabajador(documento)
@@ -326,7 +326,7 @@ class TareoSinOp : Fragment() {
 
 
     private fun startTime(){
-        timeI.setOnClickListener {
+        timeISOP.setOnClickListener {
             val materialTimePicker: MaterialTimePicker = MaterialTimePicker.Builder()
                 .setTitleText("SELECCIONA HORA DE INICIO")
                 .setHour(6)
@@ -370,13 +370,13 @@ class TareoSinOp : Fragment() {
                     }
                 }
                 inicioLabor = calculationHour(pickedHour, pickedMinute)
-                hourIni.setText(formattedTimeI)
+                hourIniSOP.setText(formattedTimeI)
             }
         }
     }
 
     private fun endTime(){
-        timeF.setOnClickListener {
+        timeFSOP.setOnClickListener {
             val materialTimePicker: MaterialTimePicker = MaterialTimePicker.Builder()
                 .setTitleText("SELECCIONA HORA DE FIN")
                 .setHour(17)
@@ -419,7 +419,7 @@ class TareoSinOp : Fragment() {
                     }
                 }
                 finLabor = calculationHour(pickedHour, pickedMinute)
-                hourFin.setText(formattedTimeF)
+                hourFinSOP.setText(formattedTimeF)
             }
         }
     }
@@ -427,21 +427,21 @@ class TareoSinOp : Fragment() {
     private fun addFood(){
         var foodDiscount = true
 
-        timeE.setOnClickListener {
+        timeESOP.setOnClickListener {
             if(foodDiscount) {
 
-                hourE.setText(R.string.foodAc)
+                hourESOP.setText(R.string.foodAc)
 
-                timeE.setBackgroundColor(Color.parseColor("#912A84"))
-                timeE.setTextColor(Color.parseColor("#FFFFFFFF"))
+                timeESOP.setBackgroundColor(Color.parseColor("#912A84"))
+                timeESOP.setTextColor(Color.parseColor("#FFFFFFFF"))
                 foodDiscount = false
 
             }else{
 
-                hourE.setText(R.string.foodN)
+                hourESOP.setText(R.string.foodN)
                 foodDiscount = true
 
-                timeE.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+                timeESOP.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
             }
         }
     }
@@ -459,16 +459,16 @@ class TareoSinOp : Fragment() {
         val sharedPref = context?.getSharedPreferences("password", Context.MODE_PRIVATE)
         val savedString = sharedPref?.getString("STRING_KEY", null)
         val userRegistra = savedString.toString()
-        val dni = dniT.text.toString()
-        val activity = activity.selectedItem.toString()
+        val dni = dniTSOP.text.toString()
+        val activity = activitySOP.selectedItem.toString()
         val phase = activity.substring(0,3)
-        val ccostos = costcenter.selectedItem.toString()
-        val job = job.selectedItem.toString()
+        val ccostos = costcenterSOP.selectedItem.toString()
+        val job = jobSOP.selectedItem.toString()
         //val labor = job.substring(0,6)
-        val advance = advanceT.text.toString()
-        val timeI = hourIni.text.toString()
-        val timeF = hourFin.text.toString()
-        val timeE = hourE.text.toString()
+        val advance = advanceTSOP.text.toString()
+        val timeI = hourIniSOP.text.toString()
+        val timeF = hourFinSOP.text.toString()
+        val timeE = hourESOP.text.toString()
         val cal: Calendar = Calendar.getInstance()
         val sdf = SimpleDateFormat("yyyy-MM-dd")
         val strDate: String = sdf.format(cal.time)
@@ -558,9 +558,9 @@ class TareoSinOp : Fragment() {
 
     fun clearEditText(){
 
-        dniT.setText("")
-        advanceT.setText("")
-        timeE.text = ""
+        dniTSOP.setText("")
+        advanceTSOP.setText("")
+        timeESOP.text = ""
 
     }
 

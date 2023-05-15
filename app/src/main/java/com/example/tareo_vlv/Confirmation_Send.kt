@@ -1,9 +1,9 @@
 package com.example.tareo_vlv
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.tareo_vlv.actividades.PreRegister
+import androidx.appcompat.app.AppCompatActivity
+import com.example.tareo_vlv.actividades.SyncData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -17,9 +17,9 @@ class Confirmation_Send : AppCompatActivity() {
         supportActionBar?.hide()
         CoroutineScope(Dispatchers.Main).launch {
             delay(3000L)
-            startActivity(Intent(this@Confirmation_Send, PreRegister::class.java))
 
-            finish()
+            startActivity(Intent(this@Confirmation_Send, SyncData::class.java))
+
         }
 
     }

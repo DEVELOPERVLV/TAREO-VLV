@@ -24,10 +24,13 @@
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/activity_update.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/activity_update_tareo.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/dialog_view.xml" value="0.14703425229741018" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/fragment_configuration.xml" value="0.15715579710144928" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/fragment_down_load.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/fragment_home.xml" value="0.15715579710144928" />
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/fragment_send_tareos.xml" value="0.15715579710144928" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/fragment_sync_data.xml" value="0.15715579710144928" />
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/fragment_tareo_con_o_p.xml" value="0.33" />
-        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/fragment_tareo_sin_op.xml" value="0.15715579710144928" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/fragment_tareo_sin_op.xml" value="0.2" />
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/fragment_update_tareos.xml" value="0.15715579710144928" />
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/item_list.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/layout/nav_header.xml" value="0.3" />
@@ -39,6 +42,7 @@
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/menu/nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/mipmap-anydpi-v26/ic_conOP.xml" value="0.345" />
         <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/mipmap-anydpi-v26/ic_conOP_round.xml" value="0.345" />
+        <entry key="..\:/Users/JMORIANO/AndroidStudioProjects/TAREOVLV/app/src/main/res/xml/provider_paths.xml" value="0.365625" />
       </map>
     </option>
   </component>

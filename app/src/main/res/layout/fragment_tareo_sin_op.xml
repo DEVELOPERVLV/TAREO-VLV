@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true">
@@ -29,13 +27,13 @@
                 app:layout_constraintTop_toBottomOf="parent"/>
 
             <TextView
-                android:id="@+id/tvcultivo"
+                android:id="@+id/tvcultivoSOP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="220dp"
                 android:textColorHint="@color/black"
-                android:text="@string/costCenter"
+                android:text="@string/cultivo"
                 app:layout_constraintTop_toBottomOf="@+id/block"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +42,7 @@
                 />
 
             <Spinner
-                android:id="@+id/cultivo"
+                android:id="@+id/cultivoSOP"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
@@ -52,21 +50,21 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvcultivo"
+                app:layout_constraintTop_toBottomOf="@+id/tvcultivoSOP"
                 app:layout_constraintVertical_bias="0.02"
                 android:background="@drawable/box_material_sin"
                 android:inputType="none"
                 />
 
             <TextView
-                android:id="@+id/tvccostos"
+                android:id="@+id/tvccostosSOP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="220dp"
                 android:textColorHint="@color/black"
-                android:text="@string/op"
-                app:layout_constraintTop_toBottomOf="@+id/cultivo"
+                android:text="@string/costCenter"
+                app:layout_constraintTop_toBottomOf="@+id/cultivoSOP"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -74,7 +72,7 @@
                 />
 
             <Spinner
-                android:id="@+id/costProd"
+                android:id="@+id/costCenterSOP"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
@@ -82,21 +80,21 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvccostos"
+                app:layout_constraintTop_toBottomOf="@+id/tvccostosSOP"
                 app:layout_constraintVertical_bias="0.02"
                 android:background="@drawable/box_material_sin"
                 android:inputType="text"
                 />
 
             <TextView
-                android:id="@+id/tvphase"
+                android:id="@+id/tvphaseSOP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="220dp"
                 android:textColorHint="@color/black"
                 android:text="@string/activity"
-                app:layout_constraintTop_toBottomOf="@+id/costProd"
+                app:layout_constraintTop_toBottomOf="@+id/costCenterSOP"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -104,7 +102,7 @@
                 />
 
             <Spinner
-                android:id="@+id/activity"
+                android:id="@+id/activitySOP"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
@@ -113,20 +111,20 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvphase"
+                app:layout_constraintTop_toBottomOf="@+id/tvphaseSOP"
                 app:layout_constraintVertical_bias="0.02"
                 android:inputType="none"
                 />
 
             <TextView
-                android:id="@+id/tvlabor"
+                android:id="@+id/tvlaborSOP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="220dp"
                 android:textColorHint="@color/black"
                 android:text="@string/job"
-                app:layout_constraintTop_toBottomOf="@+id/activity"
+                app:layout_constraintTop_toBottomOf="@+id/activitySOP"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -134,7 +132,7 @@
                 />
 
             <Spinner
-                android:id="@+id/job"
+                android:id="@+id/jobSOP"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
@@ -143,13 +141,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvlabor"
+                app:layout_constraintTop_toBottomOf="@+id/tvlaborSOP"
                 app:layout_constraintVertical_bias="0.02"
                 android:inputType="none"
                 />
 
             <TextView
-                android:id="@+id/rendimiento"
+                android:id="@+id/rendimientoSOP"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
@@ -157,25 +155,25 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/job"
+                app:layout_constraintTop_toBottomOf="@+id/jobSOP"
                 app:layout_constraintVertical_bias="0.01"
                 />
 
             <TextView
-                android:id="@+id/cantidad"
+                android:id="@+id/cantidadSOP"
                 android:layout_width="180dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/rendimiento"
-                app:layout_constraintTop_toBottomOf="@+id/job"
+                app:layout_constraintStart_toEndOf="@+id/rendimientoSOP"
+                app:layout_constraintTop_toBottomOf="@+id/jobSOP"
                 app:layout_constraintVertical_bias="0.01"
                 />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/advance"
+                android:id="@+id/advanceSOP"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -190,11 +188,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cantidad"
+                app:layout_constraintTop_toBottomOf="@+id/cantidadSOP"
                 app:layout_constraintVertical_bias="0.05">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/advanceT"
+                    android:id="@+id/advanceTSOP"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="numberDecimal"
@@ -202,7 +200,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/timeI"
+                android:id="@+id/timeISOP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -213,11 +211,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/advance"
+                app:layout_constraintTop_toBottomOf="@+id/advanceSOP"
                 app:layout_constraintVertical_bias="0.12"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/horaInicio"
+                android:id="@+id/horaInicioSOP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -230,13 +228,13 @@
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/timeI"
-                app:layout_constraintTop_toBottomOf="@+id/advance"
+                app:layout_constraintStart_toEndOf="@+id/timeISOP"
+                app:layout_constraintTop_toBottomOf="@+id/advanceSOP"
                 app:layout_constraintVertical_bias="0.1"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/hourIni"
+                    android:id="@+id/hourIniSOP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
@@ -245,7 +243,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/timeF"
+                android:id="@+id/timeFSOP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -256,12 +254,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/timeI"
+                app:layout_constraintTop_toBottomOf="@+id/timeISOP"
                 app:layout_constraintVertical_bias="0.13"
                 />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/horaFin"
+                android:id="@+id/horaFinSOP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -274,13 +272,13 @@
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/timeF"
-                app:layout_constraintTop_toBottomOf="@+id/horaInicio"
+                app:layout_constraintStart_toEndOf="@+id/timeFSOP"
+                app:layout_constraintTop_toBottomOf="@+id/horaInicioSOP"
                 app:layout_constraintVertical_bias="0.1"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/hourFin"
+                    android:id="@+id/hourFinSOP"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     />
@@ -288,7 +286,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/timeE"
+                android:id="@+id/timeESOP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -300,11 +298,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/timeF"
+                app:layout_constraintTop_toBottomOf="@+id/timeFSOP"
                 app:layout_constraintVertical_bias="0.15" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/horaE"
+                android:id="@+id/horaESOP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -318,12 +316,12 @@
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/timeF"
-                app:layout_constraintTop_toBottomOf="@+id/horaFin"
+                app:layout_constraintStart_toEndOf="@+id/timeFSOP"
+                app:layout_constraintTop_toBottomOf="@+id/horaFinSOP"
                 app:layout_constraintVertical_bias="0.15">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/hourE"
+                    android:id="@+id/hourESOP"
                     android:text="@string/food"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -332,7 +330,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dni"
+                android:id="@+id/dniSOP"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -348,12 +346,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horaE"
+                app:layout_constraintTop_toBottomOf="@+id/horaESOP"
                 app:layout_constraintVertical_bias="0.15">
 
                 <com.google.android.material.textfield.TextInputEditText
 
-                    android:id="@+id/dniT"
+                    android:id="@+id/dniTSOP"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="number"
@@ -363,18 +361,18 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnScanner"
+                android:id="@+id/btnScannerSOP"
                 android:layout_width="59dp"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/icon_scanner"
-                app:layout_constraintBottom_toBottomOf="@+id/btnPre"
+                app:layout_constraintBottom_toBottomOf="@+id/btnPreSOP"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/dni"
-                app:layout_constraintTop_toBottomOf="@+id/horaE"
+                app:layout_constraintStart_toEndOf="@+id/dniSOP"
+                app:layout_constraintTop_toBottomOf="@+id/horaESOP"
                 app:layout_constraintVertical_bias="0.15" />
 
             <Button
-                android:id="@+id/btnPre"
+                android:id="@+id/btnPreSOP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
@@ -385,7 +383,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dni"
+                app:layout_constraintTop_toBottomOf="@+id/dniSOP"
                 app:layout_constraintVertical_bias="0.30"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

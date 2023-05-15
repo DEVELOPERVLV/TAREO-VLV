@@ -53,12 +53,6 @@
             android:name=".actividades.UpdateTareo"
             android:exported="false" />
         <activity
-            android:name=".actividades.SyncSuccess"
-            android:exported="false" />
-        <activity
-            android:name=".actividades.Register"
-            android:exported="true" />
-        <activity
             android:name=".actividades.PreRegister"
             android:exported="true" />
         <activity

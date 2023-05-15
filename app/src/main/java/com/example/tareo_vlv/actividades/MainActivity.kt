@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
 
                     saveSharedPreferences(dniL, idSedes)
-                    val intent = Intent(this, PreRegister::class.java)
+                    val intent = Intent(this, Principal::class.java)
                     startActivity(intent)
                     finish()
 

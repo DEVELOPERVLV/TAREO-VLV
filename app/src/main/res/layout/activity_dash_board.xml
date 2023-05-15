@@ -41,6 +41,26 @@
         android:name="com.example.tareo_vlv.actividades.SendTareos"
         />
 
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/syncData"
+        android:name="com.example.tareo_vlv.actividades.SyncData"
+        />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/downloadXlsx"
+        android:name="com.example.tareo_vlv.actividades.DownLoad"
+        />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/configuration"
+        android:name="com.example.tareo_vlv.actividades.Configuration"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

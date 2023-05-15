@@ -69,17 +69,22 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
             R.id.nav_sinc -> {
 
-                val intent = Intent(this, SyncSuccess()::class.java)
-                startActivity(intent)
-                return true
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, SyncData()).commit()
+
+            }
+
+            R.id.nav_viewTareos -> {
+
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, DownLoad()).commit()
 
             }
 
             R.id.nav_setting -> {
 
-                val intent = Intent(this, SyncSuccess()::class.java)
-                startActivity(intent)
-                return true
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, Configuration()).commit()
 
             }
 

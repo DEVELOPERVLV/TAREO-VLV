@@ -129,7 +129,7 @@ class PreRegister : AppCompatActivity() {
         when(item.itemId){
 
             R.id.icon_sync -> {
-                val intent = Intent(this, SyncSuccess()::class.java)
+                val intent = Intent(this, UpdateTareo()::class.java)
                 startActivity(intent)
                 return true
 
@@ -165,7 +165,7 @@ class PreRegister : AppCompatActivity() {
     private fun initView(){
 
         cultivo = findViewById(R.id.cultivo)
-        costcenter = findViewById(R.id.costProd)
+        costcenter = findViewById(R.id.costCenter)
         activity = findViewById(R.id.activity)
         timeI = findViewById(R.id.timeI)
         hourIni = findViewById(R.id.hourIni)

@@ -47,7 +47,7 @@ class OProdCRUD(context: Context) {
         val c: Cursor = db.query(
             TareoContract.Companion.OProdContract.TBL_OPROD,
             columnas,
-            "costCenter = ? ",
+            " IDCONSUMIDOR = ?",
             arrayOf(costCenter),
             null,
             null,

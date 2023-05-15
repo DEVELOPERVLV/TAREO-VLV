@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".actividades.SyncData"
+    android:focusableInTouchMode="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <Button
+            android:id="@+id/btnUpd"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/update_trabajadores"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1"
+            tools:layout_editor_absoluteX="191dp"
+            tools:layout_editor_absoluteY="394dp" />
+
+        <Button
+            android:id="@+id/btnUpdCultivo"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/update_data"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnUpd"
+            app:layout_constraintVertical_bias="0.05"
+            tools:layout_editor_absoluteX="191dp"
+            tools:layout_editor_absoluteY="394dp" />
+
+        <Button
+            android:id="@+id/btnUpdCCostos"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/update_dataCC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnUpdCultivo"
+            app:layout_constraintVertical_bias="0.05"
+            tools:layout_editor_absoluteX="191dp"
+            tools:layout_editor_absoluteY="394dp" />
+
+        <Button
+            android:id="@+id/btnUpdOP"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/update_dataOP"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnUpdCCostos"
+            app:layout_constraintVertical_bias="0.07"
+            tools:layout_editor_absoluteX="191dp"
+            tools:layout_editor_absoluteY="394dp" />
+
+        <Button
+            android:id="@+id/btnUpdActividad"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/update_dataAC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnUpdOP"
+            app:layout_constraintVertical_bias="0.07"
+            tools:layout_editor_absoluteX="191dp"
+            tools:layout_editor_absoluteY="394dp" />
+
+        <Button
+            android:id="@+id/btnUpdLabor"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/update_dataLAB"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnUpdActividad"
+            app:layout_constraintVertical_bias="0.07"
+            tools:layout_editor_absoluteX="191dp"
+            tools:layout_editor_absoluteY="394dp" />
+
+        <ProgressBar
+            android:id="@+id/Descargas"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnUpdLabor"
+            app:layout_constraintVertical_bias="0.07" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

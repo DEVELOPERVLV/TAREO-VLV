@@ -35,8 +35,38 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="220dp"
                 android:textColorHint="@color/black"
-                android:text="@string/costCenter"
+                android:text="@string/cultivo"
                 app:layout_constraintTop_toBottomOf="@+id/block"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.01"
+                />
+
+            <Spinner
+                android:id="@+id/cultivo"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvcultivo"
+                app:layout_constraintVertical_bias="0.02"
+                android:background="@drawable/box_material_sin"
+                android:inputType="none"
+                />
+
+            <TextView
+                android:id="@+id/tvcostCenter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="220dp"
+                android:textColorHint="@color/black"
+                android:text="@string/costCenter"
+                app:layout_constraintTop_toBottomOf="@+id/cultivo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +82,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvcultivo"
+                app:layout_constraintTop_toBottomOf="@+id/tvcostCenter"
                 app:layout_constraintVertical_bias="0.02"
                 android:background="@drawable/box_material_sin"
                 android:inputType="none"
@@ -192,6 +222,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cantidad"
                 app:layout_constraintVertical_bias="0.05">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/advanceT"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -382,13 +419,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/dni"
                 app:layout_constraintVertical_bias="0.30"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/advanceT"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="numberDecimal"
-                tools:layout_editor_absoluteX="-17dp"
-                tools:layout_editor_absoluteY="494dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

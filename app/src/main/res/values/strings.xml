@@ -8,6 +8,7 @@
     <string name="hourF">Hora Fin</string>
     <string name="hourE">Almuerzo</string>
     <string name="save_pre">Guardar</string>
+    <string name="cultivo">Cultivo</string>
     <string name="op">Orden de Producción</string>
     <string name="costCenter">Centro de Costos</string>
     <string name="activity">Fases</string>
@@ -15,6 +16,7 @@
     <string name="standar">Estandar</string>
     <string name="food">0.00</string>
     <string name="sede">Sede</string>
+    <string name="comedor">Comedor</string>
 
     <!--main layout STRINGS-->
     <string name="password">Ingrese su Contraseña</string>
@@ -24,7 +26,12 @@
     <string name="send_data">SUBIR TAREO</string>
 
     <!--sync_success layout STRINGS-->
-    <string name="update_data">ACTUALIZAR DATOS</string>
+    <string name="update_trabajadores">ACTUALIZAR Trabajador</string>
+    <string name="update_data">ACTUALIZAR CULTIVO</string>
+    <string name="update_dataCC">ACTUALIZAR CENTRO COSTOS</string>
+    <string name="update_dataOP">ACTUALIZAR OP</string>
+    <string name="update_dataAC">ACTUALIZAR ACTIVIDAD</string>
+    <string name="update_dataLAB">ACTUALIZAR LABOR</string>
 
     <!--update layout STRINGS-->
     <string name="dni">DNI</string>
@@ -44,9 +51,15 @@
     <!--Float button-->
     <string name="TODO">TODO</string>
 
+    <!--Download Xlsx-->
+    <string name="downloadXlsx">Descarga Excel</string>
+
     <string name="open_nav">Open Navigation Drawer</string>
     <string name="close_nav">Close Navigation Drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Configuration-->
+    <string name="saveConfig">Guardar</string>
 
 </resources>

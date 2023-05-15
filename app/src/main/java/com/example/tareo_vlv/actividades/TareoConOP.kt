@@ -29,6 +29,7 @@ import java.util.*
 
 class TareoConOP : Fragment() {
 
+    private lateinit var cultivo : Spinner
     private lateinit var costCenter : Spinner
     private lateinit var oProd: Spinner
     private lateinit var activity: Spinner
@@ -108,6 +109,7 @@ class TareoConOP : Fragment() {
 
     private fun initView(view: View){
 
+        cultivo = view.findViewById(R.id.cultivo)
         costCenter = view.findViewById(R.id.costCenter)
         oProd = view.findViewById(R.id.oProd)
         activity = view.findViewById(R.id.activity)
@@ -135,22 +137,22 @@ class TareoConOP : Fragment() {
         val savedString = sharedPref.getString("STRING_KEY", null)
         val userRegistra = savedString.toString()
 
-        val costCenters = costcrud.selectCCenter(userRegistra)
+        val cultivos = culcrud.selectCultivo(userRegistra)
         val listCultivo = arrayListOf<String>()
-        for(i in 0 until costCenters.size){
+        for(i in 0 until cultivos.size){
 
-            listCultivo.add(costCenters[i].idconsumidor.toString())
+            listCultivo.add(cultivos[i].descripcion.toString())
 
         }
 
         val adaptadorcul = ArrayAdapter(context, R.layout.spinner_list, listCultivo)
-        costCenter.adapter = adaptadorcul
+        cultivo.adapter = adaptadorcul
 
-        costCenter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        cultivo.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                val idconsumidores = costCenters[p2].idconsumidor.toString()
-                println("Centro de Costos:::"+idconsumidores)
-                initSpinnerOProd(idconsumidores, context)
+                val idcultivos = cultivos[p2].idCultivo.toString()
+                println("Cultivo:::"+idcultivos)
+                initSpinnerCCostos(idcultivos, context)
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -162,24 +164,25 @@ class TareoConOP : Fragment() {
 
     }
 
-    private fun initSpinnerOProd(idconsumidores: String, context: Context){
-        val oProds = oProdCRUD.selectOP(idconsumidores)
-        val lista = arrayListOf<String>()
-        for (i in 0 until oProds.size) {
+    private fun initSpinnerCCostos(idcultivos: String, context: Context){
+        val costCenters = costcrud.selectCCenter(idcultivos)
+        val listCeco = arrayListOf<String>()
+        for(i in 0 until costCenters.size){
 
-            lista.add(oProds[i].idmanual.toString())
+            listCeco.add(costCenters[i].idconsumidor.toString())
 
         }
 
-        val adaptador =
-            ArrayAdapter(context, R.layout.spinner_list, lista)
-        oProd.adapter = adaptador
+        val adaptadorcul = ArrayAdapter(context, R.layout.spinner_list, listCeco)
+        costCenter.adapter = adaptadorcul
 
-        oProd.onItemSelectedListener = object:  AdapterView.OnItemSelectedListener {
+        costCenter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                val ccostos = oProds[p2].idconsumidor.toString()
+                val idcencost = costCenters[p2].idconsumidor.toString()
+                println("Centro de Costos:::"+idcencost)
+                initSpinnerOP(idcencost, context)
+                initSpinnerFase(idcencost, context)
 
-                initSpinnerFase(ccostos.trim(), context)
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -187,6 +190,34 @@ class TareoConOP : Fragment() {
             }
 
 
+        }
+    }
+
+    private fun initSpinnerOP(ccostos: String, context: Context){
+        val ordenes = oProdCRUD.selectOP(ccostos)
+
+        Log.d("OPS:::", ordenes.toString())
+
+        val listaOrdenes = arrayListOf<String>()
+
+        for (i in 0 until ordenes.size) {
+
+            listaOrdenes.add(ordenes[i].idmanual.toString())
+
+        }
+
+        val adaptadorOP = ArrayAdapter(context, R.layout.spinner_list, listaOrdenes)
+        oProd.adapter = adaptadorOP
+
+        oProd.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long
+            ) {
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
         }
     }
 
