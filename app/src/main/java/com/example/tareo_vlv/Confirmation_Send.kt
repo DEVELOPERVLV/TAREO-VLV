@@ -1,6 +1,5 @@
 package com.example.tareo_vlv
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tareo_vlv.actividades.SyncData
@@ -18,7 +17,8 @@ class Confirmation_Send : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             delay(3000L)
 
-            startActivity(Intent(this@Confirmation_Send, SyncData::class.java))
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.syncData, SyncData()).commit()
 
         }
 

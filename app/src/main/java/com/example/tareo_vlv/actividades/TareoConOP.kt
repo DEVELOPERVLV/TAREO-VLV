@@ -55,6 +55,7 @@ class TareoConOP : Fragment() {
     private lateinit var tcrud: TrabajadorCRUD
     private lateinit var tarcrud: TareadorCRUD
     private lateinit var oProdCRUD: OProdCRUD
+    private lateinit var configCRUD: comedorCRUD
     private lateinit var rendimiento: TextView
     private lateinit var cantidad: TextView
 
@@ -79,6 +80,7 @@ class TareoConOP : Fragment() {
         tcrud = TrabajadorCRUD(context)
         tarcrud = TareadorCRUD(context)
         oProdCRUD = OProdCRUD(context)
+        configCRUD = comedorCRUD(context)
 
         initView(view)
         initSpinner(context)
@@ -455,9 +457,10 @@ class TareoConOP : Fragment() {
         var foodDiscount = true
 
         timeE.setOnClickListener {
+            val minutos = configCRUD.selectComedor()
             if(foodDiscount) {
 
-                hourE.setText(R.string.foodAc)
+                hourE.setText(minutos[0].minutos.toString())
 
                 timeE.setBackgroundColor(Color.parseColor("#912A84"))
                 timeE.setTextColor(Color.parseColor("#FFFFFFFF"))

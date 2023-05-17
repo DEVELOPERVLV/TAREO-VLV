@@ -90,13 +90,21 @@ class TareoContract {
             }
         }
 
-            class SedeContract: BaseColumns{
-                companion object{
-                    const val TBL_SEDES = "sucursal"
-                    const val IDSEDE = "IDSUCURSAL"
-                    const val SEDE = "DESCRIPCION"
-                    const val EMPRESA = "IDEMPRESA"
-                }
+        class SedeContract: BaseColumns{
+            companion object{
+                const val TBL_SEDES = "sucursal"
+                const val IDSEDE = "IDSUCURSAL"
+                const val SEDE = "DESCRIPCION"
+                const val EMPRESA = "IDEMPRESA"
             }
+        }
+
+        class ComedorContract: BaseColumns{
+            companion object{
+                const val TBL_COMEDOR = "comedor"
+                const val IDCOMEDOR = "IDCOMEDOR"
+                const val MINUTOS = "MINUTOS"
+            }
+        }
     }
 }

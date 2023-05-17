@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,7 @@ class UpdateTareos : Fragment() {
     private lateinit var listTareo: RecyclerView
     private lateinit var adaptador: AdaptadorCustom
     private lateinit var layoutManager: RecyclerView.LayoutManager
+    private lateinit var searchTareo: SearchView
 
     var listareo: ArrayList<PreModel>? = null
     private var temtareo: ArrayList<PreModel>? = null

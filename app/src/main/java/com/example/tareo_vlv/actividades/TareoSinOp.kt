@@ -55,6 +55,7 @@ class TareoSinOp : Fragment() {
     private lateinit var dbhelper: SQLiteOpenHelper
     private lateinit var tcrud: TrabajadorCRUD
     private lateinit var tarcrud: TareadorCRUD
+    private lateinit var confirCRUD: comedorCRUD
     private lateinit var rendimiento: TextView
     private lateinit var cantidad: TextView
 
@@ -85,6 +86,7 @@ class TareoSinOp : Fragment() {
         lcrud = LaborCRUD(context)
         tcrud = TrabajadorCRUD(context)
         tarcrud = TareadorCRUD(context)
+        confirCRUD = comedorCRUD(context)
 
         initView(view)
         initSpinner(context)
@@ -428,9 +430,11 @@ class TareoSinOp : Fragment() {
         var foodDiscount = true
 
         timeESOP.setOnClickListener {
+            val minutos = confirCRUD.selectComedor()
+
             if(foodDiscount) {
 
-                hourESOP.setText(R.string.foodAc)
+                hourESOP.setText(minutos[0].minutos.toString())
 
                 timeESOP.setBackgroundColor(Color.parseColor("#912A84"))
                 timeESOP.setTextColor(Color.parseColor("#FFFFFFFF"))

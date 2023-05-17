@@ -89,6 +89,12 @@ class SQLiteOpenHelper(context: Context):
                 TareoContract.Companion.SedeContract.EMPRESA + " TEXT )"
 
         const val rmvTblCompanySede = "DROP TABLE IF EXISTS " + TareoContract.Companion.SedeContract.TBL_SEDES
+
+        const val createTblComedor = "CREATE TABLE " + TareoContract.Companion.ComedorContract.TBL_COMEDOR +
+                " (" + TareoContract.Companion.ComedorContract.IDCOMEDOR + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                TareoContract.Companion.ComedorContract.MINUTOS + " TEXT )"
+
+        const val rmvTblCompanyComedor = "DROP TABLE IF EXISTS " + TareoContract.Companion.ComedorContract.TBL_COMEDOR
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -102,6 +108,8 @@ class SQLiteOpenHelper(context: Context):
         db?.execSQL(createTblLabores)
         db?.execSQL(createTblTareador)
         db?.execSQL(createTblSede)
+        db?.execSQL(createTblComedor)
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -115,6 +123,7 @@ class SQLiteOpenHelper(context: Context):
         db.execSQL(rmvTblCompanyLabores)
         db.execSQL(rmvTblCompanyTareador)
         db.execSQL(rmvTblCompanySede)
+        db.execSQL(rmvTblCompanyComedor)
         onCreate(db)
 
     }

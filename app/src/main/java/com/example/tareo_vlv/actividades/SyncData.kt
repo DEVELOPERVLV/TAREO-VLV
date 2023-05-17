@@ -1,22 +1,22 @@
 package com.example.tareo_vlv.actividades
 
+import android.animation.ObjectAnimator
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.tareo_vlv.Confirmation_Send
 import com.example.tareo_vlv.R
 import com.example.tareo_vlv.database.*
 import com.example.tareo_vlv.model.*
@@ -36,6 +36,7 @@ class SyncData : Fragment() {
     private lateinit var culcrud: CultivoCRUD
     private lateinit var opcrud: OProdCRUD
     private lateinit var descargas: ProgressBar
+    private lateinit var downloadData: TextView
 
     private var e = 0
     private var a = 0
@@ -55,12 +56,13 @@ class SyncData : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
 
         val view: View = inflater.inflate(R.layout.fragment_sync_data, container, false)
         val context: Context = requireContext()
-
+        descargas = view.findViewById(R.id.Descargas)
+        downloadData = view.findViewById(R.id.downloadData)
         tcrud = TrabajadorCRUD(context)
         tacrud = TareadorCRUD(context)
         culcrud = CultivoCRUD(context)
@@ -85,7 +87,10 @@ class SyncData : Fragment() {
         btnUpd.setOnClickListener {
             a+=1
             CoroutineScope(Dispatchers.IO).launch {
-                tcrud.deleteTrabajador()
+
+                    tcrud.deleteTrabajador()
+
+
 
                 measureTimeMillis {
                     val job1 = launch {
@@ -241,12 +246,10 @@ class SyncData : Fragment() {
 
 private fun insertTrabajador(response: String){
 
-    try {
+        try {
 
-        val jsonArray = JSONArray(response)
-        val cantidades = jsonArray.length()
-
-        thread {
+            val jsonArray = JSONArray(response)
+            val cantidades = jsonArray.length()
 
             for(i in 0 until jsonArray.length()){
                 val jsonObject = jsonArray.getJSONObject(i)
@@ -255,23 +258,24 @@ private fun insertTrabajador(response: String){
 
                 tcrud.insertPersonal(TrabajadorModel(idcodigogeneral, trabajador))
 
-                e+=1
+                thread {
 
-                println(e)
-                if(cantidades == e){
-                    redirection()
+                    e+=1
+
+                    if (cantidades == e){
+                        redirection()
+                    }
+
                 }
 
             }
+        }catch (e:Exception){
 
-        }.start()
-
-    }catch (e:Exception){
-
+        }
     }
-}
 
 private fun cultivoHTTP(dni: String){
+
     val queue = Volley.newRequestQueue(context)
     val stringRequest = StringRequest(
 
@@ -288,32 +292,35 @@ private fun cultivoHTTP(dni: String){
 }
 
 private fun insertCLA(response: String){
-    e==0
+    var cont = 0
     try {
+
         val jsonArray = JSONArray(response)
         val cantidades = jsonArray.length()
-        thread {
 
-            for(i in 0 until jsonArray.length()){
-                val jsonObject = jsonArray.getJSONObject(i)
-                culcrud.insertCultivo(
-                    CultivoModel(
-                        jsonObject.getString("idAreaCultivo")
-                        ,jsonObject.getString("dni")
-                        ,jsonObject.getString("descripcion")
-                    )
+
+        for(i in 0 until jsonArray.length()){
+            val jsonObject = jsonArray.getJSONObject(i)
+            culcrud.insertCultivo(
+                CultivoModel(
+                    jsonObject.getString("idAreaCultivo")
+                    ,jsonObject.getString("dni")
+                    ,jsonObject.getString("descripcion")
                 )
+            )
 
-                e+=1
-                if(cantidades == e){
+            thread {
+
+                cont+=1
+
+                if (cantidades == cont){
                     redirection()
                 }
 
             }
 
+        }
 
-
-        }.start()
 
 
 
@@ -340,29 +347,32 @@ private fun costosHTTP(dni: String){
 }
 
 private fun insertCC(response: String){
-    e==0
+    var cont = 0
     try {
         val jsonArray = JSONArray(response)
         val cantidades = jsonArray.length()
-        thread {
 
-            for(i in 0 until jsonArray.length()){
-                val jsonObject = jsonArray.getJSONObject(i)
-                costcrud.insetCCenter(
-                    CCenterModel(
+        for(i in 0 until jsonArray.length()){
+            val jsonObject = jsonArray.getJSONObject(i)
+            costcrud.insetCCenter(
+                CCenterModel(
                     jsonObject.getString("idAreaCultivo")
                     ,jsonObject.getString("ccostos")
                 )
-                )
+            )
 
-                e+=1
-                if(cantidades == e){
+            thread {
+
+                cont+=1
+                if (cantidades == cont){
                     redirection()
                 }
 
+
             }
 
-        }.start()
+        }
+
     }catch (e:Exception){
 
     }
@@ -387,33 +397,39 @@ private fun oprodHTTP(){
 }
 
 private fun insertOprod(response: String){
-    e==0
+    var cont = 0
     try {
+
         val jsonArray = JSONArray(response)
         val cantidades = jsonArray.length()
-        thread {
 
-            for (i in 0 until jsonArray.length()){
-                val jsonObject = jsonArray.getJSONObject(i)
+        for (i in 0 until jsonArray.length()){
+            val jsonObject = jsonArray.getJSONObject(i)
 
-                opcrud.insertOProd(
-                    OProdModel(
+            opcrud.insertOProd(
+                OProdModel(
                     jsonObject.getString("IDORDENPRO"),
                     jsonObject.getString("idconsumidor"),
                     jsonObject.getString("IDMANUAL")
                 )
-                )
+            )
 
-                e+=1
-                if(cantidades == e){
+            thread {
+
+                cont+=1
+
+                if (cantidades == cont){
                     redirection()
                 }
+
 
             }
 
             println("OPS AGREGADAS")
 
-        }.start()
+        }
+
+
     }catch (e:Exception){
 
     }
@@ -438,30 +454,33 @@ private fun activityHTTP(){
 }
 
 private fun insertFase(response: String){
-    e==0
+    var cont = 0
     try {
         val jsonArray = JSONArray(response)
         val cantidades = jsonArray.length()
-        thread {
 
-            for (i in 0 until jsonArray.length()) {
-                val jsonObject = jsonArray.getJSONObject(i)
-                acrud.insertActivity(
-                    ActivityModel(
+        for (i in 0 until jsonArray.length()) {
+            val jsonObject = jsonArray.getJSONObject(i)
+            acrud.insertActivity(
+                ActivityModel(
                     jsonObject.getString("IDACTIVIDAD")
                     ,jsonObject.getString("DESCRIPCION")
                     ,jsonObject.getString("POR_RENDIMIENTO")
                     ,jsonObject.getString("IDCONSUMIDOR")
                 )
-                )
+            )
 
-                e+=1
-                if(cantidades == e){
+            thread {
+
+                cont+=1
+                if (cantidades == cont){
                     redirection()
                 }
 
             }
-        }.start()
+
+        }
+
     }catch (e:Exception){
 
     }
@@ -490,31 +509,38 @@ private fun laboresHTTP(){
 }
 
 private fun insertLab(response: String){
-    e==0
+    var cont = 0
     try {
         val jsonArray = JSONArray(response)
         val cantidades = jsonArray.length()
 
-        thread {
-
-            for(i in 0 until jsonArray.length()){
-                val jsonObject = jsonArray.getJSONObject(i)
-                lcrud.insertLabor(
-                    LaborModel(
+        for(i in 0 until jsonArray.length()){
+            val jsonObject = jsonArray.getJSONObject(i)
+            lcrud.insertLabor(
+                LaborModel(
                     jsonObject.getString("CODIGO")
                     ,jsonObject.getString("idlabor")
                     ,jsonObject.getString("DESCRIPCION")
                     ,jsonObject.getString("cantidad")
                 )
-                )
+            )
 
-                e+=1
-                if(cantidades == e){
+            thread {
+
+                cont+=1
+
+                if (cantidades == cont){
+
                     redirection()
+
                 }
 
+
             }
-        }.start()
+
+        }
+
+
     }catch (e: Exception){
 
     }
@@ -523,12 +549,17 @@ private fun insertLab(response: String){
 
 
 private fun redirection(){
+
+
     val handler = Handler(Looper.getMainLooper())
     handler.post {
-        Toast.makeText(context, "Datos sincronizados correctamente", Toast.LENGTH_SHORT).show()
+
+       Toast.makeText(context, "Datos descargados correctamente", Toast.LENGTH_SHORT).show()
+
     }
 
-
+/* val intent = Intent(context, Confirmation_Send::class.java )
+        startActivity(intent)*/
 }
 
 }

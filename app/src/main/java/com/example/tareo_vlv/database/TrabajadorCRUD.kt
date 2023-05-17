@@ -57,7 +57,8 @@ class TrabajadorCRUD(context: Context) {
     }
 
     fun deleteTrabajador(){
-        val db:SQLiteDatabase = helper?.readableDatabase!!
-        return db.execSQL("delete from "+TareoContract.Companion.PersonalContract.TBL_PERSONAL)
+        val db:SQLiteDatabase = helper?.writableDatabase!!
+        db.delete(TareoContract.Companion.PersonalContract.TBL_PERSONAL, null, null)
+        db.close()
     }
 }
